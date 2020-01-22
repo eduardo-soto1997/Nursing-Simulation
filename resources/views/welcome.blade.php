@@ -3,12 +3,11 @@
 @section('title', 'Welcome!')
 
 @section('content')
-
 <div class="lead-banner">
         <img src= "{{ asset('/img/banner-1.png') }}"/>
         <div class="banner-content">
           <div class="wrapper">
-            <span class="title"> Professor Sillitti</span>
+            <span class="title">{{ Auth::user()->name }},</span>
             <span class="sub-title">Welcome to our Simulation</span>
           </div>
         </div>
@@ -35,5 +34,5 @@
       </div>
     </section>
 
-    
+
 @endsection('content')
