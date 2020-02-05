@@ -20,6 +20,7 @@
         <li><a href="/patients"> Patients </a></li>
         @endif
       </ul>
+      <a class="btn btn-primary" href="{{ url('/logout') }}" role="button"> logout </a>
     </div>
   </nav>
 

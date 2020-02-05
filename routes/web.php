@@ -12,6 +12,7 @@
 */
 
     Route::get('/login', '@Pagecontroller@login');
+    Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 // Anything that should be covered by the login goes under this group...
 Route::group(['middleware' => ['auth']], function () {
