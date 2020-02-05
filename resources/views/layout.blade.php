@@ -14,9 +14,11 @@
     <div class="wrapper">
       <ul>
         <li><a href="/">Home</a></li>
+        @if(Auth::user()->is_Admin)
         <li><a href="/classes"> Classes </a></li>
         <li><a href ="/students"> Students </a></li>
         <li><a href="/patients"> Patients </a></li>
+        @endif
       </ul>
     </div>
   </nav>
