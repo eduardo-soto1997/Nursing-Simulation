@@ -30,6 +30,18 @@
 
               </div>
 
+              <div class="form-group">
+                  <label>Class</label>
+                  {{Form::text('class', null, ['class' => 'form-controller']) }}
+
+              </div>
+
+              <div class="form-group">
+                  <label>Section</label>
+                  {{Form::text('section', null, ['class' => 'form-controller']) }}
+
+              </div>
+
 
               <div class="form-group">
                   <button class="btn btn-primary">Save</button>

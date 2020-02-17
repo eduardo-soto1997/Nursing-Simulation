@@ -43,6 +43,8 @@ class StudentController extends Controller
         $ObjStudent = new Students();
         $ObjStudent ->firstname = $request->input('firstname');
         $ObjStudent ->lastname = $request->input('lastname');
+        $ObjStudent ->class = $request->input('class');
+        $ObjStudent ->section = $request->input('section');
 
 
         $ObjStudent-> save();
@@ -89,6 +91,8 @@ class StudentController extends Controller
 
         $ObjStudent->firstname = $request->input('firstname');
         $ObjStudent->lastname = $request->input('lastname');
+        $ObjStudent ->class = $request->input('class');
+        $ObjStudent ->section = $request->input('section');
 
         $ObjStudent->save();
 

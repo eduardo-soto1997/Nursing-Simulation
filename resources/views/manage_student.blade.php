@@ -14,6 +14,8 @@
                     <thead>
                       <th>Firstname</th>
                       <th>Lastname</th>
+                      <th>Class</th>
+                      <th>Section</th>
                       <th>Action</th>
                     </thead>
                     <tbody>
@@ -21,6 +23,8 @@
                       <tr>
                         <td>{{$student -> firstname}}</td>
                         <td>{{$student -> lastname}}</td>
+                        <td>{{$student -> class}}</td>
+                        <td>{{$student -> section}}<td>
                         <td><a href="{{route('students.edit', $student->id )}}">
                             <button class="btn btn-success"> Edit </button>
                             </a>
