@@ -50,6 +50,12 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::resource('/students','StudentController');
+
+    Route::resource('patient','PatientController');
+    Route::resource('medications','MedicationsController');
+    Route::resource('questions','QuestionsController');
+    Route::resource('possible_interventions','Possible_InterventionsController');
+    Route::resource('disseases','DisseasesController');
 });
 
 Auth::routes();
@@ -57,10 +63,3 @@ Auth::routes();
 Route::get('/home','PagesController@home');
 
 Auth::routes();
-
-
-Route::resource('patient','PatientController');
-Route::resource('medications','MedicationsController');
-Route::resource('questions','QuestionsController');
-Route::resource('possible_interventions','Possible_InterventionsController');
-Route::resource('disseases','DisseasesController');
