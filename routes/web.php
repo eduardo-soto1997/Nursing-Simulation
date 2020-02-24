@@ -10,10 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
     Route::get('/login', '@Pagecontroller@login');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
+    //Route::get('/register', 'RegisterController@boot');
 
 // Anything that should be covered by the login goes under this group...
 Route::group(['middleware' => ['auth']], function () {

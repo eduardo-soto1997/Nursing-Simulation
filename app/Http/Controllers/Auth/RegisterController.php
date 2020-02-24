@@ -22,6 +22,10 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    public function showRegistrationForm(){
+      $classes = \DB::table('classes')->select('course_number', 'id', 'class_name', 'section')->get();
+      return view('auth.register', ['classes' => $classes] );
+    }
 
     /**
      * Where to redirect users after registration.
@@ -37,8 +41,14 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+
+      $this->middleware('guest');
+
     }
+
+    /*public function boot(){
+
+    }*/
 
     /**
      * Get a validator for an incoming registration request.
@@ -67,6 +77,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'class' => $data['class'],
         ]);
     }
 }
