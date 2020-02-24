@@ -26,8 +26,16 @@
         <li><a href ="/students"><i class="fas fa-users fa-fw"></i>Students </a></li>
         <li><a href="/patients"><i class="fas fa-user-injured fa-fw"></i>Patients </a></li>
         @endif
-        <li><a href="{{ url('/logout') }}" role="button"><i class="fas fa-sign-out-alt fa-fw"></i>Logout </a></li>
-        <li><a href="/"><i class="fas fa-user-md"></i>{{ Auth::user()->name }}</a></li>
+        <li class="dropdown">
+          <a  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-md"></i>{{ Auth::user()->name }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="main-nav">
+            <a href="{{ url('/logout') }}" class="dropdown-item" role="button">Logout</a>
+            <a class="dropdown-item" href="#">View Score</a>
+          </div>
+        </li>
+        <!--<li><a href="/"><i class="fas fa-user-md"></i>{{ Auth::user()->name }}</a></li> -->
       </ul>
     </div>
   </nav>
