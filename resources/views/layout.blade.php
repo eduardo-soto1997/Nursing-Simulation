@@ -18,13 +18,16 @@
   <nav id="main-nav">
     <div class="wrapper">
       <ul>
-        <li><a href="/"> Home </a></li>
+        <li>
+          <a href="/"><i class="fas fa-home fa-fw"></i>Home</a>
+        </li>
         @if(Auth::user()->is_Admin)
-        <li><a href="/classes"> Classes </a></li>
-        <li><a href ="/students"> Students </a></li>
-        <li><a href="/patients"> Patients </a></li>
+        <li><a href="/classes"><i class="fas fa-chalkboard-teacher fa-fw"></i>Classes</a></li>
+        <li><a href ="/students"><i class="fas fa-users fa-fw"></i>Students </a></li>
+        <li><a href="/patients"><i class="fas fa-user-injured fa-fw"></i>Patients </a></li>
         @endif
-        <li><a href="{{ url('/logout') }}" role="button"> logout </a></li>
+        <li><a href="{{ url('/logout') }}" role="button"><i class="fas fa-sign-out-alt fa-fw"></i>Logout </a></li>
+        <li><a href="/"><i class="fas fa-user-md"></i>{{ Auth::user()->name }}</a></li>
       </ul>
     </div>
   </nav>

@@ -14,6 +14,7 @@
     Route::get('/login', '@Pagecontroller@login');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+
 // Anything that should be covered by the login goes under this group...
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/','PagesController@home');
@@ -56,3 +57,10 @@ Auth::routes();
 Route::get('/home','PagesController@home');
 
 Auth::routes();
+
+
+Route::resource('patient','PatientController');
+Route::resource('medications','MedicationsController');
+Route::resource('questions','QuestionsController');
+Route::resource('possible_interventions','Possible_InterventionsController');
+Route::resource('disseases','DisseasesController');
