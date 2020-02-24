@@ -33,7 +33,7 @@ li {
       clear: both; }
   #main-nav li {
     float: left;
-    width: 16.66667%; }
+    width: 20%; }
     @media screen and (max-width: 600px) {
       #main-nav li {
         width: 100%; } }
