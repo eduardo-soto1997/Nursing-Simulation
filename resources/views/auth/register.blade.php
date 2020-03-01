@@ -67,7 +67,7 @@
                             <div class="col-md-6">
                               <select name="class" id="class" class="form-control">
                                   @foreach($classes as $class )
-                                    <option value="{{ $class->id }}">{{$class->course_number.$class->class_name}} </option>
+                                    <option value="{{ $class->id }}">{{$class->course_number." ".$class->class_name." Section: ".$class->section}} </option>
                                   @endforeach
                               </select>
 

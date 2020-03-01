@@ -1,38 +1,38 @@
 @extends('layout')
 
-@section('title', 'Add Students')
+@section('title', 'Add Users')
 
 @section('content')
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
-        <div class="panel-heading"> Add student </div>
+        <div class="panel-heading"> Add User </div>
 
         <div class="panel-body">
-          @if(!empty($Students))
-              {{Form::model($Students, array('route' => array('students.update', $Students->id), 'method' => 'PATCH'))}}
+          @if(!empty($user))
+              {{Form::model($user, array('route' => array('user.update', $user->id), 'method' => 'PATCH'))}}
             @else
-            {{ Form::open(['route' => ['students.store'], 'method' => 'POST'])}}
+            {{ Form::open(['route' => ['user.store'], 'method' => 'POST'])}}
             @endif
             {{csrf_field()}}
 
               <div class="form-group">
-                  <label>First Name</label>
-                  {{Form::text('firstname', null, ['class' => 'form-controller']) }}
+                  <label>Name</label>
+                  {{Form::text('name', null, ['class' => 'form-controller']) }}
 
               </div>
 
 
               <div class="form-group">
-                  <label>Last Name</label>
-                  {{Form::text('lastname', null, ['class' => 'form-controller']) }}
+                  <label>Email</label>
+                  {{Form::Email('email', null, ['class' => 'form-controller']) }}
 
               </div>
 
               <div class="form-group">
                   <label>Class</label>
-                  {{Form::text('class', null, ['class' => 'form-controller']) }}
+                  {{Form::text('class', null, ['classes_id' => 'form-controller']) }}
 
               </div>
 

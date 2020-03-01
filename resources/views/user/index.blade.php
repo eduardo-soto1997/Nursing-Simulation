@@ -1,36 +1,38 @@
+<?php use \App\Http\Controllers\UserController;
+?>
+
 @extends('layout')
 
-@section('title', 'Students')
+@section('title', 'Users')
 
 @section('content')
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
-        <div class="panel-heading"> Manage student </div>
+        <div class="panel-heading"> Manage Users </div>
 
                 <div class="panel-body">
                   <table class ="table">
                     <thead>
-                      <th>Firstname</th>
-                      <th>Lastname</th>
-                      <th>Class</th>
-                      <th>Section</th>
+                      <th>UserName</th>
+                      <th>Email</th>
+                      <th>Is Admin</th>
                       <th>Action</th>
                     </thead>
                     <tbody>
-                      @foreach($Students as $student)
+                      @foreach($users as $user)
                       <tr>
-                        <td>{{$student -> firstname}}</td>
-                        <td>{{$student -> lastname}}</td>
-                        <td>{{$student -> class}}</td>
-                        <td>{{$student -> section}}<td>
-                        <td><a href="{{route('students.edit', $student->id )}}">
+                        <td>{{$user -> name}}</td>
+                        <td>{{$user -> email}}</td>
+                        <td>{{$user -> is_Admin}}</td>
+
+                        <td><a href="{{url('users/edit', $user->id )}}">
                             <button class="btn btn-success"> Edit </button>
                             </a>
                         </td>
                         <td>
-                          <form action="{{action('StudentController@destroy', $student->id)}}" method="post">
+                          <form action="{{action('UserController@destroy', $user->id)}}" method="post">
                           {{csrf_field()}}
                           <input name="_method" type="hidden" value="DELETE">
                           <button class="btn btn-danger" type="submit">Delete</button>
@@ -41,7 +43,6 @@
                     </tbody>
               </div>
         </div>
-        <a href="{{route('students.create')}}">Create students</a>
       </div>
     </div>
   </div>

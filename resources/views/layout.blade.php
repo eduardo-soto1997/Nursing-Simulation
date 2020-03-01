@@ -23,7 +23,7 @@
         </li>
         @if(Auth::user()->is_Admin)
         <li><a href="/classes"><i class="fas fa-chalkboard-teacher fa-fw"></i>Classes</a></li>
-        <li><a href ="/students"><i class="fas fa-users fa-fw"></i>Students </a></li>
+        <li><a href ="/users"><i class="fas fa-users fa-fw"></i>Users </a></li>
         <li><a href="/patients"><i class="fas fa-user-injured fa-fw"></i>Patients </a></li>
         @endif
         <li class="dropdown">

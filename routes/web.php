@@ -1,5 +1,5 @@
 <?php
-
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-    Route::get('/login', '@Pagecontroller@login');
+    Route::get('/login', 'Pagecontroller@login');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
     //Route::get('/register', 'RegisterController@boot');
 
@@ -20,7 +20,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/patients','PagesController@patients');
 
-    Route::get('/classes','PagesController@classes');
+    //Route::get('/users','UserController@show');
 
     Route::get('/student', 'PagesController@students');
 
@@ -36,9 +36,11 @@ Route::group(['middleware' => ['auth']], function () {
       return view('patients');
     });
 
-    Route::get('/students', function(){
-      return view('manage_student');
-    });
+    Route::get('/users', 'UserController@show');
+    Route::post('/users', 'UserController@store');
+//  Route::get('/users/create', 'UserController@create');
+    Route::get('/users/edit/{post}', 'UserController@edit');
+    Route::put('/users/{user}', 'UserController@update');
 
     Route::get('/student_welcome', function(){
       return view('student_welcome');
@@ -49,7 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::resource('/students','StudentController');
-
+    Route::resource('/users', 'UserController' );
     Route::resource('patient','PatientController');
     Route::resource('medications','MedicationsController');
     Route::resource('questions','QuestionsController');
