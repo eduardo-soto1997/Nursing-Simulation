@@ -12,7 +12,7 @@
             <label class="label" for="name">Name</label>
 
             <div class="control">
-                <input class="input" type="text" name="name" id="name" value="{{$user->name}}">
+                <input class="form-control" type="text" name="name" id="name" value="{{$user->name}}">
             </div>
           </div>
 
@@ -20,7 +20,7 @@
             <label class="label" for="email">Email</label>
 
             <div class="control">
-                <input class="input" type="email" name="email" id="email" value="{{$user->email}}">
+                <input class="form-control" type="email" name="email" id="email" value="{{$user->email}}">
             </div>
           </div>
 
