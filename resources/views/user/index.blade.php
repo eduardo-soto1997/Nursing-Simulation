@@ -18,6 +18,7 @@
                       <th>UserName</th>
                       <th>Email</th>
                       <th>Is Admin</th>
+                      <th>Class</th>
                       <th>Action</th>
                     </thead>
                     <tbody>
@@ -26,6 +27,7 @@
                         <td>{{$user -> name}}</td>
                         <td>{{$user -> email}}</td>
                         <td>{{$user -> is_Admin}}</td>
+                        <td>{{$user -> classes -> course_number." ".$user -> classes -> class_name." Section: ".$user -> classes -> section}}</td>
 
                         <td><a href="{{url('users/edit', $user->id )}}">
                             <button class="btn btn-success"> Edit </button>
