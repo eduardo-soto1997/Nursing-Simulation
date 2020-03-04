@@ -1,7 +1,6 @@
 @extends('layout')
 
 @section('content')
-  <div id="wrapper">
     <div id="page" class="container">
       <h1>Edit User</h1>
 
@@ -42,7 +41,10 @@
                 @endforeach
             </select>
           </div>
+          <br>
+          <div>
           <button class="btn btn-success" type="submit">Modify User</button>
+          </div>
         </form>
   </div>
 
