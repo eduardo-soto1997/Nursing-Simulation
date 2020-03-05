@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Patient;
 
 class PatientController extends Controller
 {
@@ -13,10 +14,10 @@ class PatientController extends Controller
    */
   public function index()
   {
-      $patient = Patient::latest()->paginate(5);
-
-      return view('patient.index',compact('patient'))
-          ->with('i', (request()->input('page', 1) - 1) * 5);
+    $patients = Patient::all();
+    return view('patient.index', [
+      'patients' => $patients
+    ]);
   }
 
   /**
@@ -26,7 +27,7 @@ class PatientController extends Controller
    */
   public function create()
   {
-      return view('patient.create');
+      return view('patient.add');
   }
 
   /**
@@ -37,30 +38,8 @@ class PatientController extends Controller
    */
   public function store(Request $request)
   {
-      $request->validate([
-          'name' => 'required',
-          'mrn' => 'required',
-          'admitting_diagnosis'=> 'required',
-          'code_status'=> 'required',
-          'primary_language'=> 'required',
-          'social'=> 'required',
-          'advanced_directives_on_file'=> 'required',
-          'occupation'=> 'required',
-          'cultural_considerations'=> 'required',
-          'religious_practices'=> 'required',
-          'sensory_communication_needs'=> 'required',
-          'medical_history'=> 'required',
-          'surgical_history'=> 'required',
-          'date'=> 'required',
-          'dob'=> 'required',
-          'age'=> 'required',
-          'admission_date'=> 'required',
-          'allergies'=> 'required',
-          'interpreter_required'=> 'required',
-          'so_nok_poa'=> 'required'
-      ]);
-
-      Patient::create($request->all());
+    dd($request);
+      Patient::create($request->request->all());
 
       return redirect()->route('patient.index')
                       ->with('success','Patient created successfully.');
@@ -69,7 +48,7 @@ class PatientController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param  \App\patient  $patient
+   * @param  \App\Patient  $patient
    * @return \Illuminate\Http\Response
    */
   public function show(patient $patient)

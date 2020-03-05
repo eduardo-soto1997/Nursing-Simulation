@@ -4,7 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class patient extends Model
+class Patient extends Model
 {
-    protected $table = 'patients';
+    public function Dissease(){
+      return $this->belongsTo(Dissease::class);
+
+    }
 }
