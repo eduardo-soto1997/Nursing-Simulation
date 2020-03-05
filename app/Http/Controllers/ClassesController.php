@@ -9,21 +9,24 @@ use App\Classes;
 class ClassesController extends Controller
 {
   public function show($slug){
+      $users = User::all()->toArray();
       $classes = Classes::where('id', $slug)->firstOrFail();
       return view('manage_classes', [
         'classes' => $classes
       ]);
   }
   public function index(){
+      $users['users'] = User::all()->toArray();
       $classes = Classes::all();
       return view('class.index', [
         'classes' => $classes
-      ]);
+      ] , $users);
   }
     public function create()
     {
       //view for create
-        return view('class.create');
+       $users['users'] = User::all()->toArray();
+        return view('class.create', $users);
     }
 
     public function store(Request $request)
@@ -34,7 +37,7 @@ class ClassesController extends Controller
           'section' => 'required|numeric',
           'instructor' => 'required|max:255',
       ]);
-      $show = Classes::create($validatedData);
+      $classes = Classes::create($validatedData);
 
       return redirect('/classes')->with('success', 'Classes is successfully saved');
     }
@@ -42,8 +45,8 @@ class ClassesController extends Controller
     public function edit($id)
     {
       $classes = Classes::findOrFail($id);
-
-      return view('class.edit', compact('classes'));
+      $users['users'] = User::all()->toArray();
+      return view('class.edit', compact('classes'), $users);
     }
 
     public function update(Request $request, $id)
