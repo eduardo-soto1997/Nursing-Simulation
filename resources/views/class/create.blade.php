@@ -31,7 +31,11 @@
           </div>
           <div class="form-group">
             <label for="quantity">Instructor :</label>
-                <input type="text" class="form-control" name="instructor"/>
+            <select class="form-control" name="instructor">
+              @foreach ($users as $user)
+              <option name='instructor' value="{{ $user['id'] }}">{{ $user['name'] }}</option>
+              @endforeach
+            </select>
           </div>
           <button type="submit" class="btn btn-primary">Create Class</button>
       </form>

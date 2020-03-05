@@ -26,7 +26,7 @@
             <td>{{$class->id}}</td>
             <td>{{$class->class_name}}</td>
             <td>{{$class->course_number}}</td>
-            <td>{{$class->section,2}}</td>
+            <td>{{$class->section}}</td>
             <td>{{$class->instructor}}</td>
             <td><a href="{{ route('classes.edit', $class->id)}}" class="btn btn-warning">Edit</a></td>
             <td>

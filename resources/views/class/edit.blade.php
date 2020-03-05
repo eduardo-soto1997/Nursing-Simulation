@@ -20,19 +20,23 @@
               @csrf
               @method('PATCH')
               <label for="name">Class Name:</label>
-              <input type="text" class="form-control" name="show_name" value="{{ $classes->class_name }}"/>
+              <input type="text" class="form-control" name="class_name" value="{{ $classes->class_name }}"/>
           </div>
           <div class="form-group">
             <label for="price">Course Number :</label>
-              <input type="text" class="form-control" name="genre" value="{{ $classes->course_number }}"/>
+              <input type="text" class="form-control" name="course_number" value="{{ $classes->course_number }}"/>
           </div>
           <div class="form-group">
               <label for="price">Section :</label>
-              <input type="text" class="form-control" name="imdb_rating" value="{{$classes->section }}"/>
+              <input type="text" class="form-control" name="section" value="{{$classes->section }}"/>
           </div>
           <div class="form-group">
-              <label for="quantity">Instructor :</label>
-              <input type="text" class="form-control" name="lead_actor" value="{{ $classes->instructor }}"/>
+            <label for="quantity">Instructor :</label>
+            <select class="form-control" name="instructor">
+              @foreach ($users as $user)
+              <option name='instructor' value="{{ $user['id'] }}">{{ $user['name'] }}</option>
+              @endforeach
+            </select>
           </div>
           <button type="submit" class="btn btn-primary">Update Classes</button>
       </form>
