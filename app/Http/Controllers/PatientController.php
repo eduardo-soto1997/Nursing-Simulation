@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Patient;
+use App\Dissease;
 
 class PatientController extends Controller
 {
@@ -27,7 +28,8 @@ class PatientController extends Controller
    */
   public function create()
   {
-      return view('patient.add');
+      $disseases = Dissease::all();
+      return view('patient.add', ['disseases' => $disseases]);
   }
 
   /**
@@ -36,10 +38,32 @@ class PatientController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store()
   {
-    dd($request);
-      Patient::create($request->request->all());
+      $patient = new Patient();
+      $patient->name = request('name');
+      $patient->mrn = request('mrn');
+      $patient->admitting_diagnosis = request('admitting_diagnosis');
+      $patient->code_status = request('code_status');
+      $patient->primary_language = request('primary_language');
+      $patient->social = request('social');
+      $patient->advanced_directives_on_file = request('advanced_directives_on_file');
+      $patient->occupation = request('occupation');
+      $patient->cultural_considerations = request('cultural_considerations');
+      $patient->religious_practices = request('religious_practices');
+      $patient->sensory_communication_needs = request('sensory_communication_needs');
+      $patient->medical_history = request('medical_history');
+      $patient->surgical_history = request('surgical_history');
+      $patient->date = request('date');
+      $patient->dob = request('dob');
+      $patient->age = request('age');
+      $patient->admission_date = request('admission_date');
+      $patient->allergies = request('allergies');
+      $patient->interpreter_required = request('interpreter_required');
+      $patient->so_nok_poa = request('so_nok_poa');
+      $patient->disseases = request('dissease');
+
+      $patient->save();
 
       return redirect()->route('patient.index')
                       ->with('success','Patient created successfully.');

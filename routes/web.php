@@ -18,15 +18,8 @@ use App\User;
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/','PagesController@home');
 
-    Route::get('/student', 'PagesController@students');
-
-    Route::get('/student_welcome', 'PagesController@student_welcome');
-
     Route::get('/TB_Simulation', 'PagesController@TB_Simulation');
 
-    Route::get('/patients', function () {
-      return view('patients');
-    });
     // Everything regarding Classes
     Route::get('/classes', 'ClassesController@show');
     Route::post('/classes', 'ClassesController@store');

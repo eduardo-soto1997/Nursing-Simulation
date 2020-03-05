@@ -21,8 +21,8 @@
                       @foreach($patients as $patient)
                       <tr>
                         <td>{{$patient -> name}}</td>
-                        <td>{{$patient -> disseases -> disease}}</td>
-                        <td>{{$patient -> possible_interventions -> intervention}}</td>
+                        <td>{{$patient -> dissease -> disease}}</td>
+                        <td>{{$patient -> dissease -> possible_intervention -> intervention}}</td>
 
                         <td><a href="{{url('patients/edit', $patient->id )}}">
                             <button class="btn btn-success"> Edit </button>

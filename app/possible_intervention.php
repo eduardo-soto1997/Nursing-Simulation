@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class possible_intervention extends Model
 {
   public function Dissease(){
-    return $this->belongsTo(Dissease::class);
+    return $this->hasMany(Dissease::class);
   }
 }

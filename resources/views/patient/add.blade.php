@@ -140,7 +140,7 @@
 
       <div class=" form-group row">
           <div class="col field">
-            <label class="label" for="cultural_considerations">cultural_considerations</label>
+            <label class="label" for="cultural_considerations">Cultural Considerations</label>
             <div class="control">
               <textarea class="form-control" name="cultural_considerations" id="cultural_considerations"></textarea>
             </div>
@@ -169,14 +169,22 @@
             </div>
           </div>
       </div>
-
-          <div class="field">
+      <div class="form-group row">
+          <div class="col field">
             <label class="label" for="surgical_history">Surgical History</label>
             <div class="control">
               <textarea class="form-control" name="surgical_history" id="surgical_history"></textarea>
-
             </div>
           </div>
+          <div class="col field">
+          <label class="label" for="dissease" id="dissease">Dissease</label>
+          <select name="dissease" id="dissease" class="form-control">
+              @foreach($disseases as $dissease )
+                <option value="{{ $dissease->id }}">{{$dissease->disease}} </option>
+              @endforeach
+          </select>
+        </div>
+      </div>
           <button type="submit" class="btn btn-primary">Create Patient</button>
 
     </form>
