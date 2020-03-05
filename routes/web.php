@@ -18,10 +18,6 @@ use App\User;
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/','PagesController@home');
 
-    Route::get('/patients','PagesController@patients');
-
-    //Route::get('/users','UserController@show');
-
     Route::get('/student', 'PagesController@students');
 
     Route::get('/student_welcome', 'PagesController@student_welcome');
@@ -32,15 +28,17 @@ Route::group(['middleware' => ['auth']], function () {
       return view('classes');
     });
 
-    Route::get('/patients', function () {
-      return view('patients');
-    });
-
     Route::get('/users', 'UserController@show');
     Route::post('/users', 'UserController@store');
 //  Route::get('/users/create', 'UserController@create');
     Route::get('/users/edit/{post}', 'UserController@edit');
     Route::put('/users/{user}', 'UserController@update');
+
+    Route::get('/patients', 'PatientController@index');
+    Route::post('/patients', 'PatientController@store');
+    Route::get('/patients/create', 'PatientController@create');
+    Route::get('/patients/edit/{post}', 'PatientController@edit');
+    Route::put('/patients/{patient}', 'PatientController@update');
 
     Route::get('/student_welcome', function(){
       return view('student_welcome');
@@ -52,7 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('/students','StudentController');
     Route::resource('/users', 'UserController' );
-    Route::resource('patient','PatientController');
+    Route::resource('/patient','PatientController');
     Route::resource('medications','MedicationsController');
     Route::resource('questions','QuestionsController');
     Route::resource('possible_interventions','Possible_InterventionsController');
