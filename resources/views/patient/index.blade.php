@@ -37,6 +37,7 @@
                         </td>
                       </tr>
                       @endforeach
+                      <a href="{{url('patients/create')}}"><button class="btn btn-primary">Create</button></a>
                     </tbody>
               </div>
         </div>
