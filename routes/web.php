@@ -24,9 +24,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/TB_Simulation', 'PagesController@TB_Simulation');
 
-    Route::get('/classes', function () {
-      return view('classes');
+    Route::get('/patients', function () {
+      return view('patients');
     });
+    // Everything regarding Classes
+    Route::get('/classes', 'ClassesController@show');
+    Route::post('/classes', 'ClassesController@store');
+    Route::get('/classes/edit/{post}', 'ClasssesController@edit');
+    Route::put('/classes/{class}', 'ClasssesController@update');
 
     Route::get('/users', 'UserController@show');
     Route::post('/users', 'UserController@store');
@@ -55,6 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('questions','QuestionsController');
     Route::resource('possible_interventions','Possible_InterventionsController');
     Route::resource('disseases','DisseasesController');
+    Route::resource('classes', 'ClassesController');
 });
 
 Auth::routes();
@@ -62,3 +68,7 @@ Auth::routes();
 Route::get('/home','PagesController@home');
 
 Auth::routes();
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
