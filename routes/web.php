@@ -28,17 +28,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/TB_Simulation', 'PagesController@TB_Simulation');
 
-    /*Route::get('/classes', function () {
-      return view('class/index');
-    });*/
-
     Route::get('/patients', function () {
       return view('patients');
     });
-
+    // Everything regarding Classes
     Route::get('/classes', 'ClassesController@show');
     Route::post('/classes', 'ClassesController@store');
-    //  Route::get('/users/create', 'UserController@create');
     Route::get('/classes/edit/{post}', 'ClasssesController@edit');
     Route::put('/classes/{class}', 'ClasssesController@update');
 

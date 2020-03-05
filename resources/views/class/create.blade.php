@@ -30,8 +30,8 @@
               <input type="text" class="form-control" name="section"/>
           </div>
           <div class="form-group">
-              <label for="quantity">Instructor :</label>
-              <input type="text" class="form-control" name="instructor"/>
+            <label for="quantity">Instructor :</label>
+                <input type="text" class="form-control" name="instructor"/>
           </div>
           <button type="submit" class="btn btn-primary">Create Class</button>
       </form>

@@ -28,7 +28,7 @@
           </div>
           <div class="form-group">
               <label for="price">Section :</label>
-              <input type="text" class="form-control" name="imdb_rating" value="{{ number_format($classes->section, 2) }}"/>
+              <input type="text" class="form-control" name="imdb_rating" value="{{$classes->section }}"/>
           </div>
           <div class="form-group">
               <label for="quantity">Instructor :</label>

@@ -20,7 +20,17 @@
         @if(Auth::user()->is_Admin)
         <li><a href="/classes"><i class="fas fa-chalkboard-teacher fa-fw"></i>Classes</a></li>
         <li><a href ="/users"><i class="fas fa-users fa-fw"></i>Users </a></li>
-        <li><a href="/patients"><i class="fas fa-user-injured fa-fw"></i>Patients </a></li>
+        <li class="dropdown">
+          <a type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-injured fa-fw"></i>Patients
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="main-nav">
+            <a href="#" class="dropdown-item">Create Patient</a>
+            <a href="#" class="dropdown-item">Create Questions</a>
+            <a class="dropdown-item" href="#">Create Interventions</a>
+          </div>
+        </li>
+        <!--<li><a href="/patients"><i class="fas fa-user-injured fa-fw"></i>Patients</a></li>-->
         @endif
         <li class="dropdown">
           <a  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,11 +41,9 @@
             <a class="dropdown-item" href="#">View Score</a>
           </div>
         </li>
-        <!--<li><a href="/"><i class="fas fa-user-md"></i>{{ Auth::user()->name }}</a></li> -->
       </ul>
     </div>
   </nav>
-
 @yield('content')
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

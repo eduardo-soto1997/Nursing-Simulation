@@ -20,24 +20,12 @@ class ClassesController extends Controller
         'classes' => $classes
       ]);
   }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
       //view for create
         return view('class.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
       $validatedData = $request->validate([
@@ -51,19 +39,6 @@ class ClassesController extends Controller
       return redirect('/classes')->with('success', 'Classes is successfully saved');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
       $classes = Classes::findOrFail($id);
@@ -71,13 +46,6 @@ class ClassesController extends Controller
       return view('class.edit', compact('classes'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
       $validatedData = $request->validate([
@@ -90,13 +58,6 @@ class ClassesController extends Controller
 
       return redirect('/classes')->with('success', 'Classes is successfully updated');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
       $classes = Classes::findOrFail($id);

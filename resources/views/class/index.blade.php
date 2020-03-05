@@ -26,9 +26,9 @@
             <td>{{$class->id}}</td>
             <td>{{$class->class_name}}</td>
             <td>{{$class->course_number}}</td>
-            <td>{{number_format($class->section,2)}}</td>
+            <td>{{$class->section,2}}</td>
             <td>{{$class->instructor}}</td>
-            <td><a href="{{ route('classes.edit', $class->id)}}" class="btn btn-primary">Edit</a></td>
+            <td><a href="{{ route('classes.edit', $class->id)}}" class="btn btn-warning">Edit</a></td>
             <td>
                 <form action="{{ route('classes.destroy', $class->id)}}" method="post">
                   @csrf
@@ -43,5 +43,5 @@
   <div>
     <a href="{{ route('classes.create', $class->id)}}" class="btn btn-primary">Create</a>
   </div>
-<div>
+</div>
 @endsection

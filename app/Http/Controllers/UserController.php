@@ -8,6 +8,14 @@ use App\Classes;
 
 class UserController extends Controller
 {
+  /*public function joinTables(){
+      DB::table('users')
+      ->select('users.id','users.name','profiles.photo')
+      ->join('profiles','profiles.id','=','users.id')
+      ->where(['something' => 'something', 'otherThing' => 'otherThing'])
+      ->get();
+  }*/
+
     public function show($slug){
         $users = User::where('id', $slug)->firstOrFail();
         return view('manage_users', [
