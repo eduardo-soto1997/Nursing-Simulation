@@ -38,6 +38,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/patients/edit/{post}', 'PatientController@edit');
     Route::put('/patients/{patient}', 'PatientController@update');
 
+    Route::get('/diseases', 'DisseasesController@index');
+    Route::post('/diseases', 'DisseasesController@store');
+    Route::get('/diseases/create', 'DisseasesController@create');
+    Route::get('/diseases/edit/{post}', 'DisseasesController@edit');
+    Route::put('/diseases/{disease}', 'DisseasesController@update');
+
     Route::get('/student_welcome', function(){
       return view('student_welcome');
     });

@@ -61,7 +61,7 @@ class PatientController extends Controller
       $patient->allergies = request('allergies');
       $patient->interpreter_required = request('interpreter_required');
       $patient->so_nok_poa = request('so_nok_poa');
-      $patient->disseases = request('dissease');
+      $patient->dissease_id = request('dissease');
 
       $patient->save();
 
@@ -77,7 +77,13 @@ class PatientController extends Controller
    */
   public function show(patient $patient)
   {
-      return view('patient.show',compact('patient'));
+      $disseases = Dissease::all();
+
+      return view('patient.show', [
+        'patient' => $patient,
+        'disseases' => $disseases,
+
+      ]);
   }
 
   /**
@@ -86,10 +92,19 @@ class PatientController extends Controller
    * @param  \App\patient  $patient
    * @return \Illuminate\Http\Response
    */
-  public function edit(patient $patient)
+  public function edit($patient)
   {
     $disseases = Dissease::all();
+<<<<<<< HEAD
       return view('patient.edit',compact('patient'), ['disseases' => $disseases]);
+=======
+    $patient = Patient::findOrFail($patient);
+    return view('patient.edit', [
+      'patient' => $patient,
+      'disseases' => $disseases,
+
+    ]);
+>>>>>>> 8aafcbecc09e8131e3f981ef3d2f84db1237ec9e
   }
 
   /**
@@ -99,15 +114,30 @@ class PatientController extends Controller
    * @param  \App\patient  $patient
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, patient $patient)
+  public function update(patient $patient)
   {
-      $request->validate([
-          'name' => 'required',
-          'detail' => 'required',
-      ]);
-
-      $patient->update($request->all());
-
+    $patient->name = request('name');
+    $patient->mrn = request('mrn');
+    $patient->admitting_diagnosis = request('admitting_diagnosis');
+    $patient->code_status = request('code_status');
+    $patient->primary_language = request('primary_language');
+    $patient->social = request('social');
+    $patient->advanced_directives_on_file = request('advanced_directives_on_file');
+    $patient->occupation = request('occupation');
+    $patient->cultural_considerations = request('cultural_considerations');
+    $patient->religious_practices = request('religious_practices');
+    $patient->sensory_communication_needs = request('sensory_communication_needs');
+    $patient->medical_history = request('medical_history');
+    $patient->surgical_history = request('surgical_history');
+    $patient->date = request('date');
+    $patient->dob = request('dob');
+    $patient->age = request('age');
+    $patient->admission_date = request('admission_date');
+    $patient->allergies = request('allergies');
+    $patient->interpreter_required = request('interpreter_required');
+    $patient->so_nok_poa = request('so_nok_poa');
+    $patient->dissease_id = request('dissease');
+    $patient->save();
       return redirect()->route('patient.index')
                       ->with('success','Patient updated successfully');
   }
@@ -118,8 +148,9 @@ class PatientController extends Controller
    * @param  \App\patient  $patient
    * @return \Illuminate\Http\Response
    */
-  public function destroy(patient $patinet)
+  public function destroy($id)
   {
+      $patient = Patient::findOrFail($id);
       $patient->delete();
 
       return redirect()->route('patient.index')
