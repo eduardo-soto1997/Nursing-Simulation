@@ -185,7 +185,10 @@
           </select>
         </div>
       </div>
+      <br>
+      <div>
           <button type="submit" class="btn btn-primary">Create Patient</button>
+      </div>
 
     </form>
   </div>
