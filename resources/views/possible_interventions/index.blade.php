@@ -14,6 +14,7 @@
         <tr>
           <td>ID</td>
           <td>intervention</td>
+          <td colspan="2">Action</td>
         </tr>
     </thead>
     <tbody>
