@@ -88,7 +88,8 @@ class PatientController extends Controller
    */
   public function edit(patient $patient)
   {
-      return view('patient.edit',compact('patient'));
+    $disseases = Dissease::all();
+      return view('patient.edit',compact('patient'), ['disseases' => $disseases]);
   }
 
   /**

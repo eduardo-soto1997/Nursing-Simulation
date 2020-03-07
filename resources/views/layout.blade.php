@@ -20,7 +20,7 @@
         @if(Auth::user()->is_Admin)
         <li><a href="/classes"><i class="fas fa-chalkboard-teacher fa-fw"></i>Classes</a></li>
         <li><a href ="/users"><i class="fas fa-users fa-fw"></i>Users </a></li>
-        <li class="dropdown">
+        <!--<li class="dropdown">
           <a type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user-injured fa-fw"></i>Patients
           </a>
@@ -29,7 +29,8 @@
             <a href="#" class="dropdown-item">Create Questions</a>
             <a class="dropdown-item" href="#">Create Interventions</a>
           </div>
-        </li>
+        </li>-->
+        <li><a href="/patients"><i class="fas fa-user-injured fa-fw"></i>Patients</a></li>
         <!--<li><a href="/patients"><i class="fas fa-user-injured fa-fw"></i>Patients</a></li>-->
         @endif
         <li class="dropdown">
