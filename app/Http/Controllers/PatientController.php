@@ -95,16 +95,12 @@ class PatientController extends Controller
   public function edit($patient)
   {
     $disseases = Dissease::all();
-<<<<<<< HEAD
-      return view('patient.edit',compact('patient'), ['disseases' => $disseases]);
-=======
     $patient = Patient::findOrFail($patient);
     return view('patient.edit', [
       'patient' => $patient,
       'disseases' => $disseases,
 
     ]);
->>>>>>> 8aafcbecc09e8131e3f981ef3d2f84db1237ec9e
   }
 
   /**
