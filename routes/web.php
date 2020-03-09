@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/students','StudentController');
     Route::resource('/users', 'UserController' );
     Route::resource('/patient','PatientController');
+    Route::resource('/dissease', 'DisseasesController');
     Route::resource('medications','MedicationsController');
     Route::resource('questions','QuestionsController');
     Route::resource('possible_interventions','Possible_InterventionsController');

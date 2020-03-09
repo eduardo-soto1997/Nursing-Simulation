@@ -25,8 +25,8 @@
             <i class="fas fa-user-injured fa-fw"></i>Patients
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="main-nav">
-            <a class="dropdown-item" href="#">Create Disseases</a>
-            <a href="{{url('/patients')}}" class="dropdown-item">Create Patient</a>
+            <a class="dropdown-item" href="{{url('/diseases')}}">Manage Disseases</a>
+            <a href="{{url('/patients')}}" class="dropdown-item">Manage Patients</a>
             <a href="#" class="dropdown-item">Create Questions</a>
             <a class="dropdown-item" href="#">Create Interventions</a>
           </div>

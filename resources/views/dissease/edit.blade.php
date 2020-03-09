@@ -1,20 +1,21 @@
 @extends('layout')
 
-@section('title', 'Add Disease')
+@section('title', 'Edit Disease')
 
 @section('content')
 
 <div id="wrapper">
   <div id="page" class="container">
-    <h1>New Disease</h1>
+    <h1>Edit Disease</h1>
 
-    <form method="post" action="/diseases">
+    <form method="post" action="/diseases/{{$disease->id}}">
       @csrf
+      @method('PUT')
       <div class=" form-group row">
           <div class="col field">
             <label class="label" for="disease">Disease</label>
             <div class="control">
-              <input type="text" name="disease" id="disease">
+              <input type="text" name="disease" id="disease" value="{{$disease->disease}}">
             </div>
           </div>
           <div class="col field">
@@ -29,7 +30,7 @@
       </div>
       <br>
       <div>
-          <button type="submit" class="btn btn-primary">Create Disease</button>
+          <button type="submit" class="btn btn-primary">Edit Disease</button>
       </div>
 
     </form>
