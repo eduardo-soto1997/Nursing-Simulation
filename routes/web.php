@@ -26,6 +26,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/classes/edit/{post}', 'ClasssesController@edit');
     Route::put('/classes/{class}', 'ClasssesController@update');
 
+    Route::get('/medications', 'MedicationsController@show');
+    Route::post('/medications', 'MedicationsController@store');
+    Route::get('/medications/edit/{post}', 'MedicationsController@edit');
+    Route::put('/medications/{medication}', 'MedicationsController@update');
+
     Route::get('/questions', 'QuestionsController@show');
     Route::post('/questions', 'QuestionsController@store');
     Route::get('/questions/edit/{post}', 'QuestionsController@edit');
