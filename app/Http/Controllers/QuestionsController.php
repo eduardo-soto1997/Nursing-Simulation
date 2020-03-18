@@ -3,30 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\questions;
+use App\patient;
 
 class QuestionsController extends Controller
 {
   public function show($slug){
-      $users = User::all()->toArray();
+      $patients['patients'] = patient::all()->toArray();
       $questions = questions::where('id', $slug)->firstOrFail();
       return view('manage_questions', [
         'questions' => $questions
-      ]);
+      ], $patients);
   }
   public function index(){
-      $users['users'] = User::all()->toArray();
+    $patients['patients'] = patient::all()->toArray();
       $questions = questions::all();
       return view('questions.index', [
         'questions' => $questions
-      ] , $users);
+      ], $patients);
   }
     public function create()
     {
       //view for create
-       $users['users'] = User::all()->toArray();
-        return view('questions.create', $users);
+      $patients['patients'] = patient::all()->toArray();
+        return view('questions.create', $patients);
     }
 
     public function store(Request $request)
@@ -44,9 +44,9 @@ class QuestionsController extends Controller
 
     public function edit($id)
     {
+      $patients['patients'] = patient::all()->toArray();
       $questions = questions::findOrFail($id);
-      $users['users'] = User::all()->toArray();
-      return view('questions.edit', compact('questions'), $users);
+      return view('questions.edit', compact('questions') , $patients);
     }
 
     public function update(Request $request, $id)

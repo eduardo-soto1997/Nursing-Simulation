@@ -3,30 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\patient;
 use App\medication;
 
 class MedicationsController extends Controller
 {
   public function show($slug){
-      $users = User::all()->toArray();
+    $patients['patients'] = patient::all()->toArray();
       $medication = medication::where('id', $slug)->firstOrFail();
       return view('manage_medications', [
         'medication' => $medication
       ]);
   }
   public function index(){
-      $users['users'] = User::all()->toArray();
+    $patients['patients'] = patient::all()->toArray();
       $medication = medication::all();
       return view('medications.index', [
         'medication' => $medication
-      ] , $users);
+      ] , $patients);
   }
     public function create()
     {
       //view for create
-       $users['users'] = User::all()->toArray();
-        return view('medications.create', $users);
+      $patients['patients'] = patient::all()->toArray();
+        return view('medications.create', $patients);
     }
 
     public function store(Request $request)
@@ -46,8 +46,8 @@ class MedicationsController extends Controller
     public function edit($id)
     {
       $medication = medication::findOrFail($id);
-      $users['users'] = User::all()->toArray();
-      return view('medications.edit', compact('medication'), $users);
+      $patients['patients'] = patient::all()->toArray();
+      return view('medications.edit', compact('medication'), $patients);
     }
 
     public function update(Request $request, $id)

@@ -3,22 +3,29 @@
 @section('title', 'Edit Disease')
 
 @section('content')
-
-<div id="wrapper">
-  <div id="page" class="container">
-    <h1>Edit Disease</h1>
-
-    <form method="post" action="/diseases/{{$disease->id}}">
+<div class="card uper">
+  <div class="card-header">
+    Edit Disease
+  </div>
+  <div class="card-body">
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+      </div><br />
+    @endif
+    <form method="post" action="/diseases/{{$dissease->id}}">
       @csrf
       @method('PUT')
-      <div class=" form-group row">
-          <div class="col field">
-            <label class="label" for="disease">Disease</label>
-            <div class="control">
-              <input type="text" name="disease" id="disease" value="{{$disease->disease}}">
-            </div>
+      <div class=" form-row">
+          <div class="col">
+            <label class="label" for="dissease">Disease</label>
+              <input type="text" class="form-control" name="dissease" id="dissease" value="{{$dissease->disease}}">
           </div>
-          <div class="col field">
+          <div class="col">
           <label class="label" for="possible_intervention" id="possible_intervention">Intervention</label>
           <select name="possible_intervention" id="possible_intervention" class="form-control">
               @foreach($interventions as $intervention )
@@ -27,15 +34,10 @@
           </select>
         </div>
       </div>
-      </div>
       <br>
       <div>
           <button type="submit" class="btn btn-primary">Edit Disease</button>
       </div>
-
     </form>
   </div>
-
-</div>
-
 @endsection

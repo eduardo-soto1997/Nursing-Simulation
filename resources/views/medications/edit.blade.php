@@ -16,29 +16,39 @@
       </div><br />
     @endif
     <form method="post" action="/medications/{{$medication->id}}">
-          <div class="form-group">
+          <div class="form-row">
               @csrf
               @method('PATCH')
+              <div class="col">
               <label for="name">Medication:</label>
               <input type="text" class="form-control" name="medication" value="{{ $medication->medication }}"/>
-          </div>
-          <div class="form-group">
+              </div>
+          <div class="col">
             <label for="price">Dosage :</label>
               <input type="text" class="form-control" name="dosage" value="{{ $medication->dosage }}"/>
           </div>
-          <div class="form-group">
+        </div>
+        <br>
+        <div class="form-row">
+          <div class="col">
               <label for="price">Date Time Taken :</label>
               <input type="text" class="form-control" name="date_time_taken" value="{{$medication->date_time_taken }}"/>
           </div>
-          <div class="form-group">
+          <div class="col">
               <label for="price">Reason :</label>
               <input type="text" class="form-control" name="reason" value="{{$medication->reason }}"/>
           </div>
-          <div class="form-group">
+          <div class="col">
               <label for="price">patient :</label>
-              <input type="text" class="form-control" name="patient_id" value="{{$medication->patient_id }}"/>
+              <select class="form-control" name="patients">
+                @foreach ($patients as $patient)
+                <option name='patients' value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
+                @endforeach
+                </select>
           </div>
-          <button type="submit" class="btn btn-primary">Update Classes</button>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Update Medication</button>
       </form>
   </div>
 </div>

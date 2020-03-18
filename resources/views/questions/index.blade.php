@@ -24,10 +24,18 @@
         @foreach($questions as $question)
         <tr>
             <td>{{$question->id}}</td>
-            <td>{{$question->patient_id}}</td>
+            @foreach($patients as $patient)
+            @if($question->patient_id == $patient['id'])
+            <td>{{$patient['name']}}</td>
+            @endif
+            @endforeach
             <td>{{$question->question}}</td>
             <td>{{$question->response}}</td>
-            <td>{{$question->relevant}}</td>
+            @if($question->relevant == 1)
+            <td>Yes</td>
+            @elseif($question->relevant == 0)
+            <td>No</td>
+            @endif
             <td><a href="{{ route('questions.edit', $question->id)}}" class="btn btn-warning">Edit</a></td>
             <td>
                 <form action="{{ route('questions.destroy', $question->id)}}" method="post">

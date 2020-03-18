@@ -18,8 +18,12 @@
       <form method="post" action="{{ route('questions.store') }}">
         <div class="form-group">
             @csrf
-            <label for="patient">patient:</label>
-            <input type="text" class="form-control" name="patient_id"/>
+                <label for="patient">patient :</label>
+                <select class="form-control" name="patients">
+                  @foreach ($patients as $patient)
+                  <option name='patients' value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
+                  @endforeach
+                </select>
         </div>
           <div class="form-group">
               <label for="question">Question:</label>
@@ -29,9 +33,14 @@
               <label for="response">Response:</label>
               <input type="text" class="form-control" name="response"/>
           </div>
-          <div class="form-group">
-              <label for="relevant">Relevant:</label>
-              <input type="text" class="form-control" name="relevant"/>
+          <div class="col field">
+            <label class="label" for="relevant">Relevant?</label>
+            <div class="control">
+              <input type="radio" id="yes" name="relevant" value="1">
+              <label for="yes">Yes</label><br>
+              <input type="radio"  id="no" name="relevant" value="0">
+              <label for="no">No</label><br>
+            </div>
           </div>
           <button type="submit" class="btn btn-primary">Create question</button>
       </form>

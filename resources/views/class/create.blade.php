@@ -16,20 +16,23 @@
       </div><br />
     @endif
       <form method="post" action="{{ route('classes.store') }}">
-          <div class="form-group">
+          <div class="form-row">
               @csrf
+              <div class="col">
               <label for="name">Class Name:</label>
               <input type="text" class="form-control" name="class_name"/>
-          </div>
-          <div class="form-group">
+              </div>
+          <div class="col">
               <label for="price">Course Number :</label>
               <input type="text" class="form-control" name="course_number"/>
           </div>
-          <div class="form-group">
+        </div>
+          <div class="form-row">
+            <div class="col">
               <label for="price">Section :</label>
               <input type="text" class="form-control" name="section"/>
-          </div>
-          <div class="form-group">
+            </div>
+          <div class="col">
             <label for="quantity">Instructor :</label>
             <select class="form-control" name="instructor">
               @foreach ($users as $user)
@@ -37,6 +40,8 @@
               @endforeach
             </select>
           </div>
+        </div>
+        <br><br>
           <button type="submit" class="btn btn-primary">Create Class</button>
       </form>
   </div>

@@ -19,9 +19,12 @@
           <div class="form-group">
               @csrf
               @method('PATCH')
-              <div class="form-group">
-                  <label for="name">Patient:</label>
-                  <input type="text" class="form-control" name="patient_id" value="{{ $questions->patient_id }}"/>
+                    <label for="patient">patient :</label>
+                    <select class="form-control" name="patients">
+                      @foreach ($patients as $patient)
+                      <option name='patients' value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
+                      @endforeach
+                      </select>
               </div>
           <div class="form-group">
               <label for="name">Question:</label>
@@ -31,9 +34,14 @@
             <label for="price">Response :</label>
               <input type="text" class="form-control" name="response" value="{{ $questions->response }}"/>
           </div>
-          <div class="form-group">
-              <label for="price">Relevant :</label>
-              <input type="text" class="form-control" name="relevant" value="{{$questions->relevant }}"/>
+          <div class="col field">
+            <label class="label" for="relevant">Relevant?</label>
+            <div class="control">
+              <input type="radio" id="yes" name="relevant" value="1">
+              <label for="yes">Yes</label><br>
+              <input type="radio"  id="no" name="relevant" value="0">
+              <label for="no">No</label><br>
+            </div>
           </div>
           <button type="submit" class="btn btn-primary">Update question </button>
       </form>

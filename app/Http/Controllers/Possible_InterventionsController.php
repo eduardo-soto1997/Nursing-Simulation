@@ -3,30 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\possible_intervention;
 
 class Possible_InterventionsController extends Controller
 {
   public function show($slug){
-      $users = User::all()->toArray();
       $possible_interventions = possible_interventions::where('id', $slug)->firstOrFail();
       return view('manage_possible_interventions', [
         'possible_interventions' => $possible_interventions
       ]);
   }
   public function index(){
-      $users['users'] = User::all()->toArray();
       $possible_interventions = possible_intervention::all();
       return view('possible_interventions.index', [
         'possible_interventions' => $possible_interventions
-      ] , $users);
+      ]);
   }
     public function create()
     {
       //view for create
-       $users['users'] = User::all()->toArray();
-        return view('possible_interventions.create', $users);
+       return view('possible_interventions.create');
     }
 
     public function store(Request $request)
@@ -42,8 +38,7 @@ class Possible_InterventionsController extends Controller
     public function edit($id)
     {
       $possible_interventions = possible_intervention::findOrFail($id);
-      $users['users'] = User::all()->toArray();
-      return view('possible_intervention.edit', compact('possible_interventions'), $users);
+      return view('possible_intervention.edit', compact('possible_interventions'));
     }
 
     public function update(Request $request, $id)

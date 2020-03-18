@@ -29,7 +29,11 @@
             <td>{{$meds->dosage}}</td>
             <td>{{$meds->date_time_taken}}</td>
             <td>{{$meds->reason}}</td>
-            td>{{$meds->patient_id}}</td>
+            @foreach($patients as $patient)
+            @if($meds->patient_id == $patient['id'])
+            <td>{{$patient['name']}}</td>
+            @endif
+            @endforeach
             <td><a href="{{ route('medications.edit', $meds->id)}}" class="btn btn-warning">Edit</a></td>
             <td>
                 <form action="{{ route('medications.destroy', $meds->id)}}" method="post">

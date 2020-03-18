@@ -3,6 +3,7 @@
 @section('title', 'Classes')
 
 @section('content')
+<h2>Classes</h2>
 <div class="uper">
   @if(session()->get('success'))
     <div class="alert alert-success">
@@ -27,7 +28,11 @@
             <td>{{$class->class_name}}</td>
             <td>{{$class->course_number}}</td>
             <td>{{$class->section}}</td>
-            <td>{{$class->instructor}}</td>
+            @foreach($users as $user)
+            @if($class->instructor == $user['id'])
+            <td>{{$user['name']}}</td>
+            @endif
+            @endforeach
             <td><a href="{{ route('classes.edit', $class->id)}}" class="btn btn-warning">Edit</a></td>
             <td>
                 <form action="{{ route('classes.destroy', $class->id)}}" method="post">

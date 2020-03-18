@@ -28,7 +28,7 @@ class DisseasesController extends Controller
 
     public function edit($dissease){
       $interventions = possible_intervention::all();
-      $dissease = Dissease::findOrFail($disseaes);
+      $dissease = Dissease::findOrFail($dissease);
       return view('dissease.edit', [
         'interventions' => $interventions,
         'dissease' => $dissease
@@ -44,7 +44,7 @@ class DisseasesController extends Controller
     }
 
     public function update($dissease){
-      $dissease = Disease::findOrFail($dissease);
+      $dissease = Dissease::findOrFail($dissease);
       $dissease->disease = request('disease');
       $disease->possible_intervention_id = request('possible_intervention');
       $dissease->save();

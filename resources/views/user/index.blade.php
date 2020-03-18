@@ -26,7 +26,11 @@
                   <tr>
                     <td>{{$user -> name}}</td>
                     <td>{{$user -> email}}</td>
-                    <td>{{$user -> is_Admin}}</td>
+                    @if($user -> is_Admin == 1)
+                    <td>Yes</td>
+                    @elseif($user -> is_Admin == 0)
+                    <td>No</td>
+                    @endif
                     <td>{{$user -> classes -> course_number." ".$user -> classes -> class_name." Section: ".$user -> classes -> section}}</td>
                     <td><a href="{{url('users/edit', $user->id )}}">
                         <button class="btn btn-success"> Edit </button>
