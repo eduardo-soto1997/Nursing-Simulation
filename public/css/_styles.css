@@ -134,3 +134,77 @@ section h1 {
     margin-right: 0; }
   #projects li img {
     width: 100%; }
+
+        .column {
+          position: absolute;
+          top: 8%;
+          right: 8%;
+          font-size: 18px;;
+    }
+    .column-1 {
+    float: left;
+    width: 25%;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+        .submit button{
+          float: right;
+          margin-left: 10px;
+
+        }
+        .btn-group-vertical button{
+      border: none;
+      background-color: inherit;
+      padding: 5px 24px;
+      font-size: 12px;
+      cursor: pointer;
+      display: block;
+      text-align: left;
+    }
+    .btn-group-vertical button:hover
+     {background: #ccc;}
+
+
+
+     .btn-group-vertical1{
+    border: 2px solid #555555;
+    background-color: inherit;
+    padding: 10px 20px;
+    font-size: 12px;
+    cursor: pointer;
+    display: inline;
+    text-align: center;
+    margin: 5px;
+    }
+
+
+      .btn-group-vertical1 span {
+     cursor: pointer;
+     display: inline-block;
+     position: relative;
+     transition: 0.5s;
+    }
+
+      .btn-group-vertical1 span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    .btn-group-vertical1:hover span {
+      padding-right: 20px;
+    }
+
+    .btn-group-vertical1:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
