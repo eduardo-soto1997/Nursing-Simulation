@@ -10,7 +10,7 @@ class SimulationController extends Controller
 {
   public function index(){
       $questions = questions::all();
-      $patients = patient::all();
+      $patients = Patient::all()->where('id', '=', 3);
       return view('simulation.simulation', [
         'questions' => $questions,
         'patients'=> $patients

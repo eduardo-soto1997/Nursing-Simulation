@@ -14,30 +14,64 @@
       </div>
       <div class="column-1">
         <img src="/img/tbPic.png" style="position: absolute;
-        left: 0;
+        left: -5%;
         top: 10%;
         width: 30%;
         height: 75%;
         text-align: center;
         font-size: 18px;"/>
         </div>
-          <div class=" form-group row">
         <div class="column">
-          <div class="btn-group-vertical">
             @foreach($patients as $patient)
             <div class=" form-group row">
                 <div class="col field">
-                  <label class="label" for="name">Name: {{$patient->name}} </label>
+                  <div class="control">
+                    <label class="label" for="name">Name:{{$patient->name}} </label>
+                  </div>
                 </div>
                 <div class="col field">
-                  <label class="label" for="mrn">MRN: {{$patient->mrn}} </label>
+                  <div class="control">
+                  <label class="label" for="mrn">MRN:{{$patient->mrn}} </label>
+                  </div>
                 </div>
             </div>
-            <button>{{$patient->mrn}}</button>
-            <button>{{$patient->admitting_diagnosis}}</button>
-            <button>{{$patient->code_status}}</button>
-            <button>{{$patient->primary_language}}</button>
-            <button>{{$patient->social}}</button>
+            <div class=" form-group row">
+                <div class="col field">
+                  <div class="control">
+                    <label class="label" for="admitting_diagnosis">admitting diagnosis:{{$patient->admitting_diagnosis}} </label>
+                  </div>
+                </div>
+                <div class="col field">
+                  <div class="control">
+                  <label class="label" for="code_status">code status:{{$patient->code_status}} </label>
+                  </div>
+                </div>
+            </div>
+            <div class=" form-group row">
+                <div class="col field">
+                  <div class="control">
+                    <label class="label" for="primary_language">primary language:{{$patient->primary_language}} </label>
+                  </div>
+                </div>
+                <div class="col field">
+                  <div class="control">
+                  <label class="label" for="social">social:{{$patient->social}} </label>
+                  </div>
+                </div>
+            </div>
+            <div class=" form-group row">
+                <div class="col field">
+                  <div class="control">
+                    <label class="label" for="advanced_directives_on_file">directives on file:{{$patient->advanced_directives_on_file}} </label>
+                  </div>
+                </div>
+                <div class="col field">
+                  <div class="control">
+                  <label class="label" for="occupation">occupation:{{$patient->occupation}} </label>
+                  </div>
+                </div>
+            </div>
+            <!--
             <button>{{$patient->advanced_directives_on_file}}</button>
             <button>{{$patient->occupation}}</button>
             <button>{{$patient->cultural_considerations}}</button>
@@ -52,7 +86,7 @@
             <button>{{$patient->allergies}}</button>
             <button>{{$patient->interpreter_required}}</button>
             <button>{{$patient->so_nok_poa}}</button>
-            <button>{{$patient->dissease_id}}</button>
+            <button>{{$patient->dissease_id}}</button>-->
             @endforeach
         </div>
 

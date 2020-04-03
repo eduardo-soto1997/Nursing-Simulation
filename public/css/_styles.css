@@ -136,10 +136,10 @@ section h1 {
     width: 100%; }
 
         .column {
-          position: absolute;
+          position: fixed;
           top: 8%;
-          right: 8%;
-          font-size: 18px;;
+          right: 10%;
+
     }
     .column-1 {
     float: left;
