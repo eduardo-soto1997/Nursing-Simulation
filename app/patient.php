@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Dissease;
+use App\medication;
 
 class Patient extends Model
 {
