@@ -22,11 +22,20 @@ class MedicationsController extends Controller
         'medication' => $medication
       ] , $patients);
   }
-    public function create()
+    public function create($id)
     {
       //view for create
-      $patients['patients'] = patient::all()->toArray();
-        return view('medications.create', $patients);
+      if($id != 0){
+        $patients = patient::findOrFail($id);
+        return view('medications.createWithId',
+        [
+          'patients' => $patients
+        ]
+       );
+      }
+      $patients = patient::all()->toArray();
+        return view('medications.create', [
+          'patients' => $patients]);
     }
 
     public function store(Request $request)

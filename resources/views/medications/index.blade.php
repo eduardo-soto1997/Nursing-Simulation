@@ -47,7 +47,7 @@
     </tbody>
   </table>
   <div>
-    <a href="{{ route('medications.create', $medication->first())}}" class="btn btn-primary">Create</a>
+    <a href="/medications/create/0" class="btn btn-primary">Create</a>
   </div>
 </div>
 @endsection

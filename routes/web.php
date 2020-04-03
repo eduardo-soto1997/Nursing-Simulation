@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/medications', 'MedicationsController@store');
     Route::get('/medications/edit/{post}', 'MedicationsController@edit');
     Route::put('/medications/{medication}', 'MedicationsController@update');
+    Route::get('/medications/create/{id}', 'MedicationsController@create');
 
     Route::get('/questions', 'QuestionsController@show');
     Route::post('/questions', 'QuestionsController@store');
