@@ -19,11 +19,12 @@
         <div class="form-group">
             @csrf
                 <label for="patient">patient :</label>
-                <select class="form-control" name="patients">
+                <select class="form-control" name="patient_id">
+                  <option disabled selected value> -- select an option -- </option>
                   @foreach ($patients as $patient)
-                  <option name='patients' value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
+                  <option name="patient_id" value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
                   @endforeach
-                </select>
+                  </select>
         </div>
           <div class="form-group">
               <label for="question">Question:</label>
