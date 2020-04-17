@@ -31,6 +31,7 @@ class QuestionsController extends Controller
 
     public function store(Request $request)
     {
+      $patient = patient::findOrFail($request->only('patient_id'))->toArray();
       $validatedData = $request->validate([
         'patient_id' => 'required|max:255',
         'question' => 'required|max:255',
@@ -39,7 +40,9 @@ class QuestionsController extends Controller
       ]);
       $questions = questions::create($validatedData);
 
-      return redirect('/questions')->with('success', 'questions is successfully saved');
+      return view('questions.createWithId', [
+        'patient' => $patient[0]
+      ]);
     }
 
     public function edit($id)

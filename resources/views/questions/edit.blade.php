@@ -19,10 +19,10 @@
           <div class="form-group">
               @csrf
               @method('PATCH')
-                    <label for="patient">patient :</label>
-                    <select class="form-control" name="patients">
+                    <label for="patient_id">patient :</label>
+                    <select class="form-control" name="patient_id">
                       @foreach ($patients as $patient)
-                      <option name='patients' value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
+                      <option name='patient_id' value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
                       @endforeach
                       </select>
               </div>
