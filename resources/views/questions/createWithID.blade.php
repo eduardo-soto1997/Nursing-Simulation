@@ -46,7 +46,7 @@
       </form>
       <br>
       <br>
-      <a href="{{route('questions.index')}}"><button class="btn btn-danger">I'm done!</button></a>
+      <a href="{{route('questions.index')}}"><button class="btn btn-danger">I'm done for this patient!</button></a>
   </div>
 </div>
 @endsection

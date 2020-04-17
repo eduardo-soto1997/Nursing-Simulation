@@ -46,8 +46,10 @@
           </div>
           <br>
           <button type="submit" class="btn btn-primary">Create Medication</button>
-
       </form>
+      <br>
+      <br>
+      <a href="{{route('medications.index')}}"><button class="btn btn-danger">I'm done for this patient!</button></a>
   </div>
 </div>
 @endsection

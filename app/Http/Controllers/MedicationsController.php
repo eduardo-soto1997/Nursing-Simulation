@@ -40,6 +40,7 @@ class MedicationsController extends Controller
 
     public function store(Request $request)
     {
+      $patient = patient::findOrFail($request->only('patient_id'))->toArray();
       $validatedData = $request->validate([
           'medication' => 'required|max:255',
           'dosage' => 'required|max:255',
@@ -49,7 +50,10 @@ class MedicationsController extends Controller
       ]);
       $medication = medication::create($validatedData);
 
-      return redirect('/medications')->with('success', 'medication is successfully saved');
+      return view('medications.createWithId',
+      [
+        'patient' => $patient[0]
+      ]);
     }
 
     public function edit($id)
