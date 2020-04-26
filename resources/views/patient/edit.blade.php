@@ -55,6 +55,7 @@
               <label class="label" for="gneder">Gender</label>
               <div class="control">
                 <select name="gender" class="form-control" id="gender" class="form-control" value="{{$patient->gender}}">
+                  <option selected="true" disabled="disabled">---Gender----</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                 </select>
@@ -189,6 +190,7 @@
             <div class="col field">
             <label class="label" for="dissease" id="dissease">Dissease</label>
             <select name="dissease" id="dissease" class="form-control">
+              <option selected="true" disabled="disabled">---Medication----</option>
                 @foreach($disseases as $dissease )
                   <option value="{{ $dissease->id }}">{{$dissease->disease}} </option>
                 @endforeach

@@ -115,6 +115,7 @@ class PatientController extends Controller
    */
   public function update(patient $patient)
   {
+    
     $patient->name = request('name');
     $patient->mrn = request('mrn');
     $patient->admitting_diagnosis = request('admitting_diagnosis');

@@ -32,38 +32,38 @@
                   </div>
                   <div class="col field">
                     <div class="control">
-                    <label class="label" for="mrn">MRN:{{$patient->mrn}} </label>
+                    <label class="label" for="dob">DOB:{{$patient->dob}} </label>
+                    </div>
+                  </div>
+              </div>
+              <div class=" form-group row">
+                <div class="col field">
+                  <div class="control">
+                  <label class="label" for="mrn">MRN:{{$patient->mrn}} </label>
+                  </div>
+                </div>
+                  <div class="col field">
+                    <div class="control">
+                    <label class="label" for="age">Age:{{$patient->age}} </label>
                     </div>
                   </div>
               </div>
               <div class=" form-group row">
                   <div class="col field">
                     <div class="control">
-                      <label class="label" for="admitting_diagnosis">admitting diagnosis:{{$patient->admitting_diagnosis}} </label>
+                      <label class="label" for="gender">Gender:{{$patient->gender}} </label>
                     </div>
                   </div>
                   <div class="col field">
                     <div class="control">
-                    <label class="label" for="code_status">code status:{{$patient->code_status}} </label>
-                    </div>
-                  </div>
-              </div>
-              <div class=" form-group row">
-                  <div class="col field">
-                    <div class="control">
-                      <label class="label" for="primary_language">primary language:{{$patient->primary_language}} </label>
-                    </div>
-                  </div>
-                  <div class="col field">
-                    <div class="control">
-                    <label class="label" for="social">social:{{$patient->social}} </label>
+                    <label class="label" for="allergies">Allergies:{{$patient->allergies}} </label>
                     </div>
                   </div>
               </div>
               <div class=" form-group row">
                   <div class="col field">
                     <div class="control">
-                      <label class="label" for="advanced_directives_on_file">directives on file:{{$patient->advanced_directives_on_file}} </label>
+                      <label class="label" for="primary_language">Primary language:{{$patient->primary_language}} </label>
                     </div>
                   </div>
                   <div class="col field">
@@ -72,6 +72,9 @@
                     </div>
                   </div>
               </div>
+
+              <a href="{{route('simulation.patientInformation', $patient->id) }}" target="_blank"><button class="btn btn-primary">Patient's Full information </button></a>
+
 </div>
 </div>
 </div>

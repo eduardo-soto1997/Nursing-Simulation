@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\questions;
 use App\patient;
+use App\medication;
 
 class SimulationController extends Controller
 {
@@ -16,4 +17,11 @@ class SimulationController extends Controller
         'patients'=> $patients
       ]);
   }
+
+  public function show($id)
+    {
+        $patient = patient::find($id);
+        $medications = medication::all()->where('patient_id', '=', $id);
+        return view('simulation.patientInformation', ['patient' => $patient, 'medications' => $medications]);
+    }
 }
