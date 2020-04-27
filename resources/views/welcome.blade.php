@@ -18,7 +18,7 @@
         <ul>
           <li>
             <img src="img/icon-1.png" />
-            <a href="ComingSoon.html">Tuberculosis<br />Simulation</a>
+            <a href="{{route('simulation.index') }}">Tuberculosis<br />Simulation</a>
           </li>
           <li>
             <img src="img/icon-2.png" />
