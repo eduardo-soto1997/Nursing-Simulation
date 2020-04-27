@@ -18,12 +18,11 @@
       <form method="post" action="{{ route('questions.store') }}">
         <div class="form-group">
             @csrf
-                <label for="patient_id">patient :</label>
-                <select class="form-control" name="patient_id">
-                  @foreach ($patients as $patient)
-                  <option name='patient_id' value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
-                  @endforeach
-                </select>
+            <label for="patient_id">patient :</label>
+            <select class="form-control" name="patient_id">
+              <option name='patient_id' value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
+            </select>
+
         </div>
           <div class="form-group">
               <label for="question">Question:</label>
@@ -43,12 +42,13 @@
             </div>
           </div>
           <br>
+          {{ Form::hidden('creatingPatient', 1) }}
           <button type="submit" class="btn btn-primary">Create question</button>
-          {{ Form::hidden('creatingPatient', 0) }}
       </form>
       <br>
       <br>
-      <a href="{{route('questions.index')}}"><button class="btn btn-danger">I'm done!</button></a>
+      <a href="{{route('medications.createWithId', ['id' => $patient['id']])}}"><button class="btn btn-danger">I'm done for this patient!</button></a>
+
   </div>
 </div>
 @endsection

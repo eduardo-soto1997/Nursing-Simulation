@@ -20,22 +20,24 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/TB_Simulation', 'PagesController@TB_Simulation');
 
+    Route::get('/medications/createwithid/{id}' , 'MedicationsController@create')->name('medications.createWithId');
+
     // Everything regarding Classes
     Route::get('/classes', 'ClassesController@show');
     Route::post('/classes', 'ClassesController@store');
     Route::get('/classes/edit/{post}', 'ClasssesController@edit');
     Route::put('/classes/{class}', 'ClasssesController@update');
 
+    Route::get('/questions', 'QuestionsController@show');
+    Route::post('/questions', 'QuestionsController@store');
+    Route::get('/questions/edit/{post}', 'QuestionsController@edit');
+    Route::put('/questions/{question}', 'QuestionsController@update');
+
     Route::get('/medications', 'MedicationsController@show');
     Route::post('/medications', 'MedicationsController@store');
     Route::get('/medications/edit/{post}', 'MedicationsController@edit');
     Route::put('/medications/{medication}', 'MedicationsController@update');
     Route::get('/medications/create/{id}', 'MedicationsController@create');
-
-    Route::get('/questions', 'QuestionsController@show');
-    Route::post('/questions', 'QuestionsController@store');
-    Route::get('/questions/edit/{post}', 'QuestionsController@edit');
-    Route::put('/questions/{question}', 'QuestionsController@update');
 
     Route::get('/possible_interventions', 'Possible_InterventionsController@show');
     Route::post('/possible_interventions', 'Possible_InterventionsController@store');
@@ -72,8 +74,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/users', 'UserController' );
     Route::resource('/patient','PatientController');
     Route::resource('/dissease', 'DisseasesController');
-    Route::resource('medications','MedicationsController');
     Route::resource('questions','QuestionsController');
+    Route::resource('medications','MedicationsController');
     Route::resource('possible_interventions','Possible_InterventionsController');
     Route::resource('disseases','DisseasesController');
     Route::resource('classes', 'ClassesController');

@@ -64,10 +64,9 @@ class PatientController extends Controller
       $patient->dissease_id = request('dissease');
 
       $patient->save();
-      $patients = Patient::all()->toArray();
-      return view('medications.createWithId', [
-        'patient' => $patient,
-        'patients' => $patients
+      $patients = Patient::latest()->first();
+      return view('questions.CreateQuestions', [
+        'patient' => $patients
       ]);
 
   }
@@ -101,7 +100,7 @@ class PatientController extends Controller
     $patient = Patient::findOrFail($patient);
     return view('patient.edit', [
       'patient' => $patient,
-      'disseases' => $disseases,
+      'disseases' => $disseases
 
     ]);
   }
@@ -137,7 +136,11 @@ class PatientController extends Controller
     $patient->so_nok_poa = request('so_nok_poa');
     $patient->dissease_id = request('dissease');
     $patient->save();
-    return view('patient.index');
+    $patients = Patient::all();
+    return view('patient.index',[
+    'patients' => $patients
+    ]
+    );
   }
 
   /**

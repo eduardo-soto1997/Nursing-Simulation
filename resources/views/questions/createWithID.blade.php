@@ -43,6 +43,7 @@
           </div>
           <br>
           <button type="submit" class="btn btn-primary">Create question</button>
+          {{ Form::hidden('creatingPatient', 0) }}
       </form>
       <br>
       <br>

@@ -19,7 +19,7 @@
         </ul>
       </div><br />
     @endif
-    <form method="post" action="/patients">
+    <form method="post" action="{{ route('patient.store') }}">
       @csrf
       <div class=" form-group row">
           <div class="col field">

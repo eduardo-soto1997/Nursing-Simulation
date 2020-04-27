@@ -40,7 +40,7 @@
           <div class="col">
               <label for="price">Patients:</label>
               <select class="form-control" name="patient_id">
-              <option name='patient_id' value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
+              <option name='patient_id' value="{{ $patients['id'] }}">{{ $patients['name'] }}</option>
               </select>
           </div>
           </div>

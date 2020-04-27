@@ -39,7 +39,11 @@ class QuestionsController extends Controller
         'relevant' => 'required|boolean',
       ]);
       $questions = questions::create($validatedData);
-
+      if(($request->only('creatingPatient')) > 0){
+        return view('questions.createQuestions', [
+          'patient' => $patient[0]
+        ]);
+      }
       return view('questions.createWithId', [
         'patient' => $patient[0]
       ]);
