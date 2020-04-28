@@ -63,7 +63,7 @@
       <label class="label" for"social">Social: {{$patient->social}}</label>
     </div>
     <div class="col field">
-      <label class="label" for="so_nok_poa">Signifigant other, Next of Kin or POA: so_nok_poa</label>
+      <label class="label" for="so_nok_poa">Signifigant other, Next of Kin or POA: {{$patient->so_nok_poa}}</label>
     </div>
 </div>
 

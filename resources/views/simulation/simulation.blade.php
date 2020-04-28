@@ -4,16 +4,33 @@
 
 @section('content')
 
+
+<script>
+$(document).ready(function(){
+  $('button[name=questions]').on("click", function(){
+      document.getElementById("response").textContent= "Response:" + $(this).val();
+  });
+
+});
+  function myFunction(question){
+    var x = question.innerHTML;
+      document.getElementById("question").textContent= "Question:" + x;
+  }
+
+</script>
+
 <div class="container">
 <div class="row">
 <div class="col-md">
   <div class="btn-group-vertical">
     <h3> Questions: </h3>
     @foreach($questions as $question)
-      <button type="button"  data-toggle="modal" data-target=".bs-example-modal-lg">{{$question->question}}</button>
+      <button onclick="myFunction(this);" name="questions" type="button" data-toggle="modal" data-target=".bs-example-modal-lg" value="{{$question->response}}">{{$question->question}}</button>
     @endforeach
     </div>
 </div>
+
+
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
@@ -22,8 +39,8 @@
         <h4 class="modal-title" id="myModalLabel">Dialogue</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
-      <p>Question:{{$question->question}}</p>
-      <p>Answer:{{$question->response}}</p>
+      <span id="question"></span>
+      <span id="response"></span>
     </div>
   </div>
 </div>
