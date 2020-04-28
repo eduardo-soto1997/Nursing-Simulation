@@ -206,9 +206,30 @@
             <label class="label" for="dissease" id="dissease">Dissease</label>
             <select name="dissease" id="dissease" class="form-control">
                 @foreach($disseases as $dissease )
+                  @if($patient->dissease == $dissease)
+                  <option selected="selected" value="{{ $dissease->id }}">{{$dissease->disease}} </option>
+                  @else
                   <option value="{{ $dissease->id }}">{{$dissease->disease}} </option>
+                  @endif
                 @endforeach
             </select>
+          </div>
+          <div class="col field">
+            <label class="label" for="active">Is this the current patient?</label>
+            <div class="control">
+              @if($patient->active)
+              <input checked="true" type="radio" id="yes" name="active" value="1">
+              <label for="yes">Yes</label><br>
+              <input type="radio" id="no" name="active" value="0">
+              <label for="no">No</label><br>
+              @else
+              <input type="radio" id="yes" name="active" value="1">
+              <label for="yes">Yes</label><br>
+              <input checked="true" type="radio" id="no" name="active" value="0">
+              <label for="no">No</label><br>
+              @endif
+
+            </div>
           </div>
         </div>
           <br>

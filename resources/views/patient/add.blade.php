@@ -195,6 +195,15 @@
               @endforeach
           </select>
         </div>
+        <div class="col field">
+          <label class="label" for="active">Is this the current patient?</label>
+          <div class="control">
+            <input type="radio" id="yes" name="active" value="1">
+            <label for="yes">Yes</label><br>
+            <input type="radio" id="no" name="active" value="0">
+            <label for="no">No</label><br>
+          </div>
+        </div>
       </div>
       <br>
       <div>
