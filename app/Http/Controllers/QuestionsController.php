@@ -9,11 +9,12 @@ use App\patient;
 class QuestionsController extends Controller
 {
   public function show($slug){
-      $patients['patients'] = patient::all()->toArray();
-      $questions = questions::where('id', $slug)->firstOrFail();
-      return view('manage_questions', [
-        'questions' => $questions
-      ], $patients);
+      $patient = patient::where('id', $slug)->firstOrFail();
+      $questions = questions::all()->where('patient_id', $slug)->toArray();
+      return view('questions.index', [
+      'questions' => $questions,
+      'patient' => $patient
+      ]);
   }
   public function index(){
     $patients['patients'] = patient::all()->toArray();
@@ -22,16 +23,19 @@ class QuestionsController extends Controller
         'questions' => $questions
       ], $patients);
   }
-    public function create()
+    public function create($slug)
     {
       //view for create
-      $patients['patients'] = patient::all()->toArray();
-        return view('questions.create', $patients);
+      $patient = patient::where('id', $slug)->firstOrFail();
+        return view('questions.create', [
+          'patient' => $patient
+          ]);
     }
 
     public function store(Request $request)
     {
-      $patient = patient::findOrFail($request->only('patient_id'))->toArray();
+      $id = (int)($request['patient_id']);
+      $patient = patient::where('id', $id)->firstOrFail();
       $validatedData = $request->validate([
         'patient_id' => 'required|max:255',
         'question' => 'required|max:255',
@@ -39,13 +43,10 @@ class QuestionsController extends Controller
         'relevant' => 'required|boolean',
       ]);
       $questions = questions::create($validatedData);
-      if(($request->only('creatingPatient')) > 0){
-        return view('questions.createQuestions', [
-          'patient' => $patient[0]
-        ]);
-      }
-      return view('questions.createWithId', [
-        'patient' => $patient[0]
+      $questions_all = questions::all()->where('patient_id', $id)->toArray();
+      return view('questions.index', [
+      'questions' => $questions_all,
+      'patient' => $patient
       ]);
     }
 
@@ -65,14 +66,24 @@ class QuestionsController extends Controller
         'relevant' => 'required|boolean',
       ]);
       questions::whereId($id)->update($validatedData);
-
-      return redirect('/questions')->with('success', 'questions is successfully updated');
+      $questions = questions::all()->where('patient_id', $request['patient_id'])->toArray();
+      $patient = patient::whereId($request['patient_id'])->firstOrFail();
+      return view('questions.index', [
+      'questions' => $questions,
+      'patient' => $patient
+      ]);
     }
     public function destroy($id)
     {
-      $questions = questions::findOrFail($id);
-      $questions->delete();
 
-      return redirect('/questions')->with('success', 'questions is successfully deleted');
+      $question = questions::findOrFail($id);
+      $question->delete();
+      $qp_id = $question->patient_id;
+      $questions = questions::all()->where('patient_id', $qp_id)->toArray();
+      $patient = patient::where('id', $qp_id)->firstOrFail();
+      return view('questions.index', [
+      'questions' => $questions,
+      'patient' => $patient
+      ]);
     }
 }

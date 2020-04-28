@@ -9,10 +9,11 @@ use App\medication;
 class MedicationsController extends Controller
 {
   public function show($slug){
-    $patients['patients'] = patient::all()->toArray();
-      $medication = medication::where('id', $slug)->firstOrFail();
-      return view('manage_medications', [
-        'medication' => $medication
+      $patient = patient::findOrFail($slug);
+      $medications = medication::all()->where('patient_id', $slug)->toArray();
+      return view('medications.index', [
+        'medications' => $medications,
+        'patient' => $patient
       ]);
   }
   public function index(){
@@ -24,23 +25,18 @@ class MedicationsController extends Controller
   }
     public function create($id)
     {
-      //view for create
-      if($id != 0){
-        $patients = patient::findOrFail($id);
-        return view('medications.createWithId',
+        $patient = patient::where('id', $id)->firstOrFail();
+        return view('medications.create',
         [
-          'patients' => $patients
+          'patient' => $patient
         ]
        );
-      }
-      $patients = patient::all()->toArray();
-        return view('medications.create', [
-          'patients' => $patients]);
     }
 
     public function store(Request $request)
     {
-      $patient = patient::findOrFail($request->only('patient_id'))->toArray();
+      $pid = (int)($request['patient_id']);
+      $patient = patient::where('id', $pid)->firstOrFail();
       $validatedData = $request->validate([
           'medication' => 'required|max:255',
           'dosage' => 'required|max:255',
@@ -49,18 +45,23 @@ class MedicationsController extends Controller
           'patient_id' => 'required|numeric',
       ]);
       $medication = medication::create($validatedData);
-
-      return view('medications.createWithId',
+      $medications = medication::all()->where('patient_id', $pid)->toArray();
+      return view('medications.index',
       [
-        'patient' => $patient[0]
+        'medications' => $medications,
+        'patient' => $patient
       ]);
     }
 
     public function edit($id)
     {
       $medication = medication::findOrFail($id);
-      $patients['patients'] = patient::all()->toArray();
-      return view('medications.edit', compact('medication'), $patients);
+      $patient = patient::where('id', $medication->patient_id)->firstOrFail();
+      return view('medications.edit', [
+        'patient' => $patient,
+        'medication' => $medication
+
+       ]);
     }
 
     public function update(Request $request, $id)
@@ -73,14 +74,27 @@ class MedicationsController extends Controller
           'patient_id' => 'required|numeric',
       ]);
       medication::whereId($id)->update($validatedData);
+      $patient = patient::where('id', $request['patient_id'])->firstOrFail();
+      $medications = medication::all()->where('patient_id', $request['patient_id'])->toArray();
 
-      return redirect('/medications')->with('success', 'medication is successfully updated');
+      return view('medications.index',
+      [
+        'medications' => $medications,
+        'patient' => $patient
+      ]);
     }
     public function destroy($id)
     {
       $medication = medication::findOrFail($id);
+      $pid = $medication->patient_id;
+      $patient = patient::findOrFail($pid);
       $medication->delete();
+      $medications = medication::all()->where('patient_id', $pid)->toArray();
 
-      return redirect('/medications')->with('success', 'medication is successfully deleted');
+
+      return view('medications.index', [
+        'medications' => $medications,
+        'patient' => $patient
+      ]);
     }
   }

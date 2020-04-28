@@ -27,6 +27,14 @@
       <button class="btn btn-success"> Edit </button>
       </a>
       </td>
+      <td><a href="{{url('questions', $patient->id )}}">
+            <button class="btn btn-success"> Questions </button>
+          </a>
+      </td>
+      <td>
+        <a href="{{url('medications', $patient->id)}}">
+          <button class="btn btn-info"> Medications </button>
+        </a>
       <td>
       <form action="{{action('PatientController@destroy', $patient->id)}}" method="post">
       {{csrf_field()}}
@@ -39,6 +47,6 @@
       </tbody>
     </table>
       <a href="{{url('patients/create')}}"><button class="btn btn-primary">Create</button></a>
-      <a href="{{url('medications/')}}"><button class="btn btn-primary">Medications</button></a>
+      <a href="{{url('diseases/')}}"><button class="btn btn-primary">Diseases</button></a>
 
 @endsection

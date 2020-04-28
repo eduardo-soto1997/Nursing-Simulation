@@ -37,5 +37,6 @@
           </tbody>
         </table>
           <a href="{{url('diseases/create')}}"><button class="btn btn-primary">Create</button></a>
+          <a href="{{url('possible_interventions/')}}"><button class="btn btn-primary">interventions</button></a>
         </div>
 @endsection

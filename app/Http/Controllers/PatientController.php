@@ -41,6 +41,7 @@ class PatientController extends Controller
   public function store()
   {
       $patient = new Patient();
+      $patient->gender = request('gender');
       $patient->name = request('name');
       $patient->mrn = request('mrn');
       $patient->admitting_diagnosis = request('admitting_diagnosis');
@@ -62,11 +63,10 @@ class PatientController extends Controller
       $patient->interpreter_required = request('interpreter_required');
       $patient->so_nok_poa = request('so_nok_poa');
       $patient->dissease_id = request('dissease');
-
       $patient->save();
-      $patients = Patient::latest()->first();
-      return view('questions.CreateQuestions', [
-        'patient' => $patients
+      $patients = Patient::all();
+      return view('patient.index', [
+        'patients' => $patients
       ]);
 
   }
@@ -114,7 +114,7 @@ class PatientController extends Controller
    */
   public function update(patient $patient)
   {
-    
+
     $patient->name = request('name');
     $patient->mrn = request('mrn');
     $patient->admitting_diagnosis = request('admitting_diagnosis');

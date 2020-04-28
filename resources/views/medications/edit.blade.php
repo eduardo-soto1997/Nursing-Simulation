@@ -40,10 +40,8 @@
           </div>
           <div class="col">
               <label for="price">patient :</label>
-              <select class="form-control" name="patients">
-                @foreach ($patients as $patient)
-                <option name='patients' value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
-                @endforeach
+              <select class="form-control" name="patient_id">
+                <option name='patient_id' value="{{ $patient->id }}">{{ $patient->name }}</option>
                 </select>
           </div>
         </div>

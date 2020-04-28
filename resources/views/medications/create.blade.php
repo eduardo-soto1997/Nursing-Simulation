@@ -16,9 +16,12 @@
       </div><br />
     @endif
       <form method="post" action="{{ route('medications.store') }}">
+        @csrf
+        <div class="form-group">
         <div class="form-row">
+
           <div class="col">
-              @csrf
+
               <label for="name">Medication:</label>
               <input type="text" class="form-control" name="medication"/>
           </div>
@@ -40,18 +43,17 @@
           <div class="col">
               <label for="price">Patient:</label>
               <select class="form-control" name="patient_id">
-              @foreach ($patients as $patient)
-              <option name='patient_id' value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
-              @endforeach
+              <option name='patient_id' value="{{ $patient->id }}">{{ $patient->name }}</option>
               </select>
           </div>
           </div>
+        </div>
           <br>
           <button type="submit" class="btn btn-primary">Create medication</button>
       </form>
       <br>
       <br>
-      <a href="{{route('medications.index')}}"><button class="btn btn-danger">I'm done!</button></a>
+      <a href="{{url('medications', $patient->id)}}"><button class="btn btn-danger">Cancel</button></a>
   </div>
 </div>
 @endsection

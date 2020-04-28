@@ -55,9 +55,14 @@
               <label class="label" for="gneder">Gender</label>
               <div class="control">
                 <select name="gender" class="form-control" id="gender" class="form-control" value="{{$patient->gender}}">
-                  <option selected="true" disabled="disabled">---Gender----</option>
-                  <option value="male">Male</option>
+                  @if($patient->gender == "male")
+                  <option selected="true" value="male">Male</option>
                   <option value="female">Female</option>
+                  @else
+                  <option value="male">Male</option>
+                  <option selected="true" value="female">Female</option>
+                  @endif
+
                 </select>
               </div>
             </div>
@@ -110,10 +115,20 @@
             <div class="col field">
               <label class="label" for="interpreter_required">Interpreter Required?</label>
               <div class="control">
-                <input type="radio" id="yes" name="interpreter_required" value="1">
+                @if($patient->interpreter_required == 1)
+
+                <input checked="checked" type="radio" id="yes" name="interpreter_required" value="1">
                 <label for="yes">Yes</label><br>
                 <input type="radio"  id="no" name="interpreter_required" value="0">
                 <label for="no">No</label><br>
+
+                @else
+                <input type="radio" id="yes" name="interpreter_required" value="1">
+                <label for="yes">Yes</label><br>
+                <input checked="checked" type="radio"  id="no" name="interpreter_required" value="0">
+                <label for="no">No</label><br>
+                @endif
+
               </div>
             </div>
         </div>
@@ -190,7 +205,6 @@
             <div class="col field">
             <label class="label" for="dissease" id="dissease">Dissease</label>
             <select name="dissease" id="dissease" class="form-control">
-              <option selected="true" disabled="disabled">---Medication----</option>
                 @foreach($disseases as $dissease )
                   <option value="{{ $dissease->id }}">{{$dissease->disease}} </option>
                 @endforeach

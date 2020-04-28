@@ -37,10 +37,19 @@
           <div class="col field">
             <label class="label" for="relevant">Relevant?</label>
             <div class="control">
-              <input type="radio" id="yes" name="relevant" value="1">
+
+              @if($questions->relevant)
+              <input checked="true" type="radio" id="yes" name="relevant" value="1">
               <label for="yes">Yes</label><br>
               <input type="radio"  id="no" name="relevant" value="0">
               <label for="no">No</label><br>
+              @else
+              <input type="radio" id="yes" name="relevant" value="1">
+              <label for="yes">Yes</label><br>
+              <input checked="true" type="radio"  id="no" name="relevant" value="0">
+              <label for="no">No</label><br>
+              @endif
+
             </div>
           </div>
           <button type="submit" class="btn btn-primary">Update question </button>

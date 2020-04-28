@@ -20,24 +20,24 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/TB_Simulation', 'PagesController@TB_Simulation');
 
-    Route::get('/medications/createwithid/{id}' , 'MedicationsController@create')->name('medications.createWithId');
-
     // Everything regarding Classes
     Route::get('/classes', 'ClassesController@show');
     Route::post('/classes', 'ClassesController@store');
     Route::get('/classes/edit/{post}', 'ClasssesController@edit');
     Route::put('/classes/{class}', 'ClasssesController@update');
 
-    Route::get('/questions', 'QuestionsController@show');
+    Route::get('/questions/{id}' , 'QuestionsController@show');
+    Route::get('/questions/create/{id}', 'QuestionsController@create');
     Route::post('/questions', 'QuestionsController@store');
     Route::get('/questions/edit/{post}', 'QuestionsController@edit');
     Route::put('/questions/{question}', 'QuestionsController@update');
 
-    Route::get('/medications', 'MedicationsController@show');
+    Route::get('/medications/{id}', 'MedicationsController@show');
+    Route::get('/medications/create/{id}', 'MedicationsController@create');
     Route::post('/medications', 'MedicationsController@store');
     Route::get('/medications/edit/{post}', 'MedicationsController@edit');
     Route::put('/medications/{medication}', 'MedicationsController@update');
-    Route::get('/medications/create/{id}', 'MedicationsController@create');
+
 
     Route::get('/possible_interventions', 'Possible_InterventionsController@show');
     Route::post('/possible_interventions', 'Possible_InterventionsController@store');

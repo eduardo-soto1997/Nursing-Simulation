@@ -20,9 +20,7 @@
             @csrf
                 <label for="patient_id">patient :</label>
                 <select class="form-control" name="patient_id">
-                  @foreach ($patients as $patient)
-                  <option name='patient_id' value="{{ $patient['id'] }}">{{ $patient['name'] }}</option>
-                  @endforeach
+                  <option name='patient_id' value="{{ $patient->id }}">{{ $patient->name }}</option>
                 </select>
         </div>
           <div class="form-group">
@@ -44,11 +42,10 @@
           </div>
           <br>
           <button type="submit" class="btn btn-primary">Create question</button>
-          {{ Form::hidden('creatingPatient', 0) }}
       </form>
       <br>
       <br>
-      <a href="{{route('questions.index')}}"><button class="btn btn-danger">I'm done!</button></a>
+      <a href="{{url('questions', $patient->id )}}"><button class="btn btn-danger">I'm done!</button></a>
   </div>
 </div>
 @endsection

@@ -18,25 +18,21 @@
           <td>Date time taken</td>
           <td>Reason</td>
           <td>Patient id</td>
-          <td colspan="2">Action</td>
+          <td colspan="1">Action</td>
         </tr>
     </thead>
     <tbody>
-        @foreach($medication as $meds)
+        @foreach($medications as $meds)
         <tr>
-            <td>{{$meds->id}}</td>
-            <td>{{$meds->medication}}</td>
-            <td>{{$meds->dosage}}</td>
-            <td>{{$meds->date_time_taken}}</td>
-            <td>{{$meds->reason}}</td>
-            @foreach($patients as $patient)
-            @if($meds->patient_id == $patient['id'])
-            <td>{{$patient['name']}}</td>
-            @endif
-            @endforeach
-            <td><a href="{{ route('medications.edit', $meds->id)}}" class="btn btn-warning">Edit</a></td>
+            <td>{{$meds['id']}}</td>
+            <td>{{$meds['medication']}}</td>
+            <td>{{$meds['dosage']}}</td>
+            <td>{{$meds['date_time_taken']}}</td>
+            <td>{{$meds['reason']}}</td>
+            <td>{{$patient->name}}</td>
+            <td><a href="{{ route('medications.edit', $meds['id'])}}" class="btn btn-warning">Edit</a></td>
             <td>
-                <form action="{{ route('medications.destroy', $meds->id)}}" method="post">
+                <form action="{{ route('medications.destroy', $meds['id'])}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
@@ -47,7 +43,10 @@
     </tbody>
   </table>
   <div>
-    <a href="/medications/create/0" class="btn btn-primary">Create</a>
+    <a href="create/{{$patient->id}}" class="btn btn-primary">Create</a>
+    <a href="{{url('/patients')}}">
+          <button class="btn btn-success"> Back </button>
+        </a>
   </div>
 </div>
 @endsection
