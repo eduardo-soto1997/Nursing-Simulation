@@ -207,3 +207,20 @@ section h1 {
       opacity: 1;
       right: 0;
     }
+
+    #table{
+  border: solid 1px red;
+  height: 500px;
+  width: 500px;
+
+}
+
+
+.modal {
+  position:fixed;
+  top:auto;
+  right:auto;
+  left:auto;
+  bottom:0;
+
+}

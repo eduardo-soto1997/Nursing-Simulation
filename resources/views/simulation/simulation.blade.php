@@ -10,9 +10,22 @@
   <div class="btn-group-vertical">
     <h3> Questions: </h3>
     @foreach($questions as $question)
-      <button>{{$question->question}}</button>
+      <button type="button"  data-toggle="modal" data-target=".bs-example-modal-lg">{{$question->question}}</button>
     @endforeach
     </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Dialogue</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <p>Question:{{$question->question}}</p>
+      <p>Answer:{{$question->response}}</p>
+    </div>
+  </div>
 </div>
 
 <div class="col-md">
@@ -77,6 +90,7 @@
 
 </div>
 </div>
+
 </div>
 @endforeach
 @endsection
