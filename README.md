@@ -1,7 +1,7 @@
 # Nursing-Simulation
 This is the github for CSC-4990 project.
 
-Installation
+# Installation
 	1. Follow these steps (https://laravel.com/docs/6.x) to install Laravel onto your system.
 	2. Run the command 'composer install' inside the project directory.
 	3. Run the command 'npm install' inside the project directory.
