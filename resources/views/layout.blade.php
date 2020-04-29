@@ -43,7 +43,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="main-nav">
             <a href="{{ url('/logout') }}" class="dropdown-item" role="button">Logout</a>
-            <a class="dropdown-item" href="#">View Score</a>
+            <a class="dropdown-item" href="{{route('user.score')}}">View Score</a>
           </div>
         </li>
       </ul>

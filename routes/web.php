@@ -79,19 +79,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('possible_interventions','Possible_InterventionsController');
     Route::resource('disseases','DisseasesController');
     Route::resource('classes', 'ClassesController');
+    Route::get('/simulation', 'SimulationController@index')->name('simulation.index');
+    Route::post('/simulation/intervention', 'SimulationController@intervention')->name('intervention.index');
+    Route::post('/simulation/score', 'SimulationController@score')->name('score.index');
+    Route::get('/simulation/{id}/show','SimulationController@show')->name('simulation.patientInformation');
+    Route::get('/home','PagesController@home');
+
+    Auth::routes();
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/score', 'UserController@score')->name('user.score');
 });
-
-Auth::routes();
-
-Route::get('/home','PagesController@home');
-
-Auth::routes();
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/simulation', 'SimulationController@index')->name('simulation.index');
-Route::post('/simulation/intervention', 'SimulationController@intervention')->name('intervention.index');
-Route::post('/simulation/score', 'SimulationController@score')->name('score.index');
-Route::get('/simulation/{id}/show','SimulationController@show')->name('simulation.patientInformation');

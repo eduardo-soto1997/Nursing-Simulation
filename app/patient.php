@@ -12,4 +12,8 @@ class Patient extends Model
       return $this->belongsTo(Dissease::class);
 
     }
+
+    public function Scores(){
+      return $this->hasMany(Scores::class);
+    }
 }

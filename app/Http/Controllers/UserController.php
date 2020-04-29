@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Classes;
+use App\patient;
+use App\scores;
 
 class UserController extends Controller
 {
@@ -57,5 +60,15 @@ class UserController extends Controller
 
       return redirect('/users');
     }
+
+    public function score(){
+      $user = Auth::user();
+      $results = scores::where('user', $user->id)->firstOrFail();
+      dd($results->patient->dissease);
+
+      return view('user.score', [
+        'results' => $results
+      ]);
+     }
 
 }

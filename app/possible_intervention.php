@@ -10,4 +10,8 @@ class possible_intervention extends Model
   public function Dissease(){
     return $this->hasMany(Dissease::class);
   }
+
+  public function Scores(){
+    return $this->hasMany(Scores::class);
+  }
 }
