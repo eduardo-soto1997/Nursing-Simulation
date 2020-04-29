@@ -10,3 +10,8 @@ Installation
 		1.) Use MySQL to execute the MySQL/CreateNursingDB.sql.
 		2.) This will create a schema called 'nursing' inside your MySQL database. This will host your project's data.
 	5.) Start server by running the 'run.bat' file, or use the command 'php artisan serve'.
+    
+    
+    
+    Screenshots
+    
