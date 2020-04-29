@@ -6,15 +6,20 @@
 
 
 <script>
+  var questionsAsked = [];
 $(document).ready(function(){
   $('button[name=questions]').on("click", function(){
       document.getElementById("response").textContent= "Response:" + $(this).val();
   });
 
 });
-  function myFunction(question){
+  function myFunction(question, id){
     var x = question.innerHTML;
-      document.getElementById("question").textContent= "Question:" + x;
+    if(!(questionsAsked.includes(id))){
+    questionsAsked.push(id);
+  }
+    document.getElementById("question").textContent= "Question:" + x;
+    document.getElementById("askedQuestions").value=questionsAsked;
   }
 
 </script>
@@ -25,7 +30,7 @@ $(document).ready(function(){
   <div class="btn-group-vertical">
     <h3> Questions: </h3>
     @foreach($questions as $question)
-      <button onclick="myFunction(this);" name="questions" type="button" data-toggle="modal" data-target=".bs-example-modal-lg" value="{{$question->response}}">{{$question->question}}</button>
+      <button onclick="myFunction(this, {{$question->id}});" name="questions" type="button" data-toggle="modal" data-target=".bs-example-modal-lg" value="{{$question->response}}">{{$question->question}}</button>
     @endforeach
     </div>
 </div>
@@ -53,61 +58,63 @@ $(document).ready(function(){
 
 <div class="col-md-6">
   <div class="column">
-              @foreach($patients as $patient)
               <div class=" form-group row">
                   <div class="col field">
                     <div class="control">
-                      <label class="label" for="name">Name:{{$patient->name}} </label>
+                      <label class="label" for="name">Name:{{$patients->name}} </label>
                     </div>
                   </div>
                   <div class="col field">
                     <div class="control">
-                    <label class="label" for="dob">DOB:{{$patient->dob}} </label>
+                    <label class="label" for="dob">DOB:{{$patients->dob}} </label>
                     </div>
                   </div>
               </div>
               <div class=" form-group row">
                 <div class="col field">
                   <div class="control">
-                  <label class="label" for="mrn">MRN:{{$patient->mrn}} </label>
+                  <label class="label" for="mrn">MRN:{{$patients->mrn}} </label>
                   </div>
                 </div>
                   <div class="col field">
                     <div class="control">
-                    <label class="label" for="age">Age:{{$patient->age}} </label>
+                    <label class="label" for="age">Age:{{$patients->age}} </label>
                     </div>
                   </div>
               </div>
               <div class=" form-group row">
                   <div class="col field">
                     <div class="control">
-                      <label class="label" for="gender">Gender:{{$patient->gender}} </label>
+                      <label class="label" for="gender">Gender:{{$patients->gender}} </label>
                     </div>
                   </div>
                   <div class="col field">
                     <div class="control">
-                    <label class="label" for="allergies">Allergies:{{$patient->allergies}} </label>
+                    <label class="label" for="allergies">Allergies:{{$patients->allergies}} </label>
                     </div>
                   </div>
               </div>
               <div class=" form-group row">
                   <div class="col field">
                     <div class="control">
-                      <label class="label" for="primary_language">Primary language:{{$patient->primary_language}} </label>
+                      <label class="label" for="primary_language">Primary language:{{$patients->primary_language}} </label>
                     </div>
                   </div>
                   <div class="col field">
                     <div class="control">
-                    <label class="label" for="occupation">occupation:{{$patient->occupation}} </label>
+                    <label class="label" for="occupation">occupation:{{$patients->occupation}} </label>
                     </div>
                   </div>
               </div>
 
-              <a href="{{route('simulation.patientInformation', $patient->id) }}" target="_blank"><button class="btn btn-primary">Patient's Full information </button></a>
-
+              <a href="{{route('simulation.patientInformation', $patients->id) }}" target="_blank"><button class="btn btn-primary">Patient's Full information </button></a>
+              <form method="post" action="{{route('intervention.index')}}">
+                @csrf
+                <input type="hidden" id="askedQuestions" name="askedQuestions" value="">
+                <button type="submit" class="btn btn-success">Intervention</button>
+              </form>
 </div>
 </div>
 
 </div>
-@endforeach
 @endsection

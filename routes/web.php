@@ -92,4 +92,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/simulation', 'SimulationController@index')->name('simulation.index');
+Route::post('/simulation/intervention', 'SimulationController@intervention')->name('intervention.index');
+Route::post('/simulation/score', 'SimulationController@score')->name('score.index');
 Route::get('/simulation/{id}/show','SimulationController@show')->name('simulation.patientInformation');
